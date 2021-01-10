@@ -7,7 +7,7 @@
     $password = $_GET["password"];
     $student = new Student($fn, $password);
     $studentName = $student->getName();
-    require_once("../views/studentPage.php");
+    //require_once("../views/studentPage.php");
 
     }
     catch(Exception $e)
