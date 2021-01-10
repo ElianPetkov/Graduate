@@ -9,7 +9,7 @@ echo "<!DOCTYPE html>
 </head>
 
 <body>
-    <h1>". $student->getName() ."</h1>
+    <h1> $studentName </h1>
 </body>
 
 </html>";
