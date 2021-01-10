@@ -28,18 +28,16 @@ class Student
     {
         $this->db = new Db();
         $studentData = $this->getStudent($fn, $password);
-        if(count($studentData) > 0)
+        if(is_array($studentData))
         {    
         $this->fn = $studentData['FN'];
         $this->password = $studentData['Password'];
         $this->name = $studentData['Name'];
         $this->grade = $studentData['Grade'];
-        return true;
         }
         else
         {
-            echo "Student doesn't exists!";
-            return false;
+            throw new Exception("Student doesn't exists!");
         }
     }
 
