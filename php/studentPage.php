@@ -1,13 +1,13 @@
 <?php
     require 'student.php';
 
-    $fn = $_GET["fn"];
-    $password = $_GET["password"];
-
     try
     {   
+    $fn = $_GET["fn"];
+    $password = $_GET["password"];
     $student = new Student($fn, $password);
-    echo $student->getName() . " " . $student->getFN() . " " . $student->getGrade() . " " . $student->getPassword(). "HELLO IT'S MEEEE" ;
+    require_once("../views/studentPage.php");
+
     }
     catch(Exception $e)
     {
