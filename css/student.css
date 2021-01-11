@@ -1,0 +1,60 @@
+body {
+    background-image: url("../pictures/student-background.jpg");
+    background-size:contain;
+    text-align: center;
+    margin: 0;
+   }
+
+#main-container {
+    margin: 1.5rem 0;
+    display: inline-block;
+    width: 50%;
+    background-color: rgb(34, 105, 58);
+    margin: 0;
+}
+
+#greetings-container,
+#invitation-container,
+#additional-information-container {
+    height: auto;
+    position: relative;
+    padding: 0 0 1.5rem 0rem;
+}
+
+#greetings-container h1,
+#additional-information-container p,
+#invitation-container p {
+    text-align: center;
+    padding: 0.9rem;
+    display: inline-block;
+    vertical-align: top;
+    width: auto;
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    font-size: 20px;
+}
+
+#pic-container {
+    width: auto;
+    padding: 0 3rem 0;
+}
+
+#image {
+    max-height: 16rem;
+}
+
+
+#button-container {
+}
+
+#invite-button {
+    width: auto;
+    height: 3rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    
+}
+
+#invite-button:focus {
+    outline: none;
+  }
