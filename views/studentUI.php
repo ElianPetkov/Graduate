@@ -1,4 +1,4 @@
-<?php require '../php/studentPage.php' ?>
+<?php require '../logic/studentPage.php' ?>
 <!DOCTYPE html>
 
 <html>

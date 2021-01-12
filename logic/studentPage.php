@@ -1,5 +1,5 @@
 <?php
-    require 'student.php';
+    require '../classes/student.php';
 
     try
     {   
