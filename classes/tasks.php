@@ -4,7 +4,7 @@ require_once '../config/includeClasses.php';
 class Tasks
 {
     private $fn;
-    private $class
+    private $class;
     private $diploma;
     private $sign;
     private $hat;
