@@ -21,6 +21,14 @@ function isCeremonyOver($ceremonyDate)
     return 0;
 }
 
+if($_POST)
+{
+    $fn = $_POST['fn'];
+    $class = $_POST['class'];
+    $task = new Tasks();
+    $task -> enrollStudent($fn,$class);
+}
+else{
 $fn = $_GET["fn"];
 $password = $_GET["password"];
 
@@ -31,6 +39,8 @@ try {
 }
 
 $studentName = $student->getName();
+$studentClass = $student->getClass();
+$studentFN = $student->getFN();
 
 
 
@@ -47,4 +57,5 @@ if (isCeremonyOver($ceremonyDate)) {
 } else {
     $isCeremonyOver = false;
     $address = $ceremony->getAddress();
+}
 }

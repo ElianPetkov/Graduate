@@ -25,9 +25,21 @@ class Tasks
         }
     }
 
-    public function __construct($fn,$class)
+    public function enrollStudent($fn,$class)
+    {
+        $insert = "INSERT INTO tasks (FN, Class) VALUES (?,?)";
+        $conn = $this->db->getConnection();
+        $statement = $conn->prepare($insert);
+        $statement->execute([$fn, $class]);
+    }
+
+    public function __construct()
     {
         $this->db = new Db();
+    }
+
+    public function initialize($fn,$class)
+    {
         $tasksData = $this->getTasks($fn,$class);
         if(is_array($tasksData))
         {    
@@ -40,7 +52,7 @@ class Tasks
         }
         else
         {
-            throw new Exception("Student with tasks doesn't exists!");
+            throw new Exception("No tasks is found for this student !");
         }
     }
 
