@@ -7,7 +7,8 @@ class Student
     private $password;
     private $name;
     private $grade;
-    //private $email;
+    private $class;
+    private $degree;
     private $db;
 
     public function getStudent($fn, $password)
@@ -34,6 +35,8 @@ class Student
         $this->password = $studentData['Password'];
         $this->name = $studentData['Name'];
         $this->grade = $studentData['Grade'];
+        $this->class = $studentData['Class'];
+        $this->degree = $studentData['Degree'];
         }
         else
         {
@@ -55,5 +58,13 @@ class Student
     
     public function getFN() {
         return $this->fn;
+    }
+
+    public function getClass() {
+        return $this->class;
+    }  
+
+    public function getDegree() {
+        return $this->degree;
     }
 }
