@@ -1,5 +1,5 @@
 <?php
-require 'ConnectionDB.php';
+require_once '../config/includeClasses.php';
 
 class Student
 {
@@ -9,6 +9,7 @@ class Student
     private $grade;
     private $class;
     private $degree;
+
     private $db;
 
     public function getStudent($fn, $password)

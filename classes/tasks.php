@@ -1,5 +1,5 @@
 <?php
-require 'ConnectionDB.php';
+require_once '../config/includeClasses.php';
 
 class Tasks
 {
