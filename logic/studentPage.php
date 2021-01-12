@@ -27,6 +27,7 @@ if($_POST)
     $class = $_POST['class'];
     $task = new Tasks();
     $task -> enrollStudent($fn,$class);
+    header("Location: ". "http://".$_POST['serverPath']);
 }
 else{
 $fn = $_GET["fn"];

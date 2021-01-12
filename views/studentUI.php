@@ -24,6 +24,7 @@
 
             <?php
             if (!$isCeremonyOver) {
+                $serverPath = $_SERVER['SERVER_NAME']."$_SERVER[REQUEST_URI]";
                 echo "
             <p>
                 В $ceremonyDate   на адрес $address  ще се състои церемония по връчване на дипломи. Моля отбележете дали ще присъствате на церемонията като подвърдите чрез натискане на бутона.
@@ -34,6 +35,7 @@
                 <button id="invite-button" type="submit">Ще присъствам</button>
                 <input hidden value="<?= $studentClass ?>" name="class">
                 <input hidden value="<?= $studentFN ?>" name="fn">
+                <input hidden value="<?= $serverPath ?>" name="serverPath">
             </form>
             </div>
             <?php
