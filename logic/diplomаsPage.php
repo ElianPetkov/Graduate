@@ -2,13 +2,9 @@
 
 require_once '../config/includeClasses.php';
 
-
-    try{
         $user = $_GET['user'];
         $password = $_GET['password'];
-    }catch(Exception $e){
-       echo $e->getMessage();
-    }
+  
 
     $select = "Select FN,Diploma from Tasks";
     $db = new Db();
