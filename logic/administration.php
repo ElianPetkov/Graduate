@@ -22,4 +22,7 @@ require_once '../config/includeClasses.php';
         $password = $_POST['password'];
         $grade = $_POST['grade'];
         $fn = $_POST['fn'];
+
+        $student = new Student();
+        $student->createStudent($class,$grade,$name,$degree,$password,$fn);
     }

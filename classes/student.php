@@ -26,6 +26,14 @@ class Student
         }
     }
 
+    public function createStudent($class, $grade, $name, $degree,$password,$fn)
+    {
+        $insert = "INSERT INTO student (Class,Grade,Name,Degree,Password,FN) VALUES (?,?,?,?,?,?)";
+        $conn = $this->db->getConnection();
+        $statement = $conn->prepare($insert);
+        $statement->execute([$class,$grade,$name,$degree,$password,$fn]);
+    }
+
     public function initialize($fn,$password)
     {
         $studentData = $this->getStudent($fn, $password);
