@@ -1,0 +1,42 @@
+#main-container {
+    margin: 1.5em 0;
+    display: inline-block;
+    width: 50%;
+    background-color: rgb(34, 105, 58);
+    margin: 0;
+}
+#student-ceremony-enroll-container{
+  display: inline-block;
+
+}
+#enroll-ceremony {
+    display: block;
+    border-radius: 0.3em;
+    padding: 1em;
+    text-align: left;
+  }
+
+input[type=text], select {
+    width: 20%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit] {
+    width: 20%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 1em 1.1em;
+    margin: 0.5em 0;
+    border: none;
+    border-radius: 0.25em;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
