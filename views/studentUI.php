@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/student.css">
     <link rel="stylesheet" href="../css/main.css">
     <link href="../pictures/favicon.ico" rel="shortcut icon" type="image/icon" />
+    <script defer src="../js/student.js"></script>
 </head>
 
 <body>
@@ -24,24 +25,32 @@
 
             <?php
             if (!$isCeremonyOver) {
-                $serverPath = $_SERVER['SERVER_NAME']."$_SERVER[REQUEST_URI]";
+                $serverPath = $_SERVER['SERVER_NAME'] . "$_SERVER[REQUEST_URI]";
                 echo "
             <p>
                 В $ceremonyDate   на адрес $address  ще се състои церемония по връчване на дипломи. Моля отбележете дали ще присъствате на церемонията като подвърдите чрез натискане на бутона.
             </p>";
             ?>
-            <div id="button-container">
-            <form action="../logic/studentPage.php" method="POST">
-                <button id="invite-button" type="submit">Ще присъствам</button>
-                <input hidden value="<?= $studentClass ?>" name="class">
-                <input hidden value="<?= $studentFN ?>" name="fn">
-                <input hidden value="<?= $serverPath ?>" name="serverPath">
-            </form>
-            </div>
+                <div id="button-container">
+                    <form action="../logic/studentPage.php" method="POST">
+                        <button id="invite-button" style="display: <?php echo ($studentIsEnrolled ? "none" : "") ?>" type="submit">Ще присъствам</button>
+                        <input hidden value="<?= $studentClass ?>" name="class">
+                        <input hidden value="<?= $studentFN ?>" name="fn">
+                        <input hidden value="<?= $serverPath ?>" name="serverPath">
+                    </form>
+                </div>
+                <div class="enrollMessage">
+                    <?php
+                    if (isset($studentIsEnrolled) && $studentIsEnrolled){
+                        echo "
+                     <p>
+                        Записан сте за предстоящата церемония на $ceremonyDate
+                    </p>";
+                    }
+                    ?>
+                </div>
             <?php
-            }
-            else
-            {
+            } else {
                 echo "
                 <p>
                 $errorMessage

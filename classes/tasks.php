@@ -25,6 +25,11 @@ class Tasks
         }
     }
 
+    public function isStudentEnroll($fn,$class)
+    {
+        return is_array($this->getTasks($fn,$class));
+    }
+
     public function enrollStudent($fn,$class)
     {
         $insert = "INSERT INTO tasks (FN, Class) VALUES (?,?)";

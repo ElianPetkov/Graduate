@@ -21,42 +21,47 @@ function isCeremonyOver($ceremonyDate)
     return 0;
 }
 
-if($_POST)
-{
+if ($_POST) {
     $fn = $_POST['fn'];
     $class = $_POST['class'];
     $task = new Tasks();
-    $task -> enrollStudent($fn,$class);
-    header("Location: ". "http://".$_POST['serverPath']);
-}
-else{
-$fn = $_GET["fn"];
-$password = $_GET["password"];
+    $studentIsEnrolled;
 
-try {
-    $student = new Student($fn, $password);
-} catch (Exception $e) {
-    echo $e->getMessage();
-}
+    if (!$task->isStudentEnroll($fn, $class)) {
+        $task->enrollStudent($fn,$class);
+    }
 
-$studentName = $student->getName();
-$studentClass = $student->getClass();
-$studentFN = $student->getFN();
+    header("Location: " . "http://" . $_POST['serverPath']);
 
-
-
-try {
-    $ceremony = new Ceremony($student->getClass(), $student->getDegree());
-} catch (Exception $e) {
-    echo $e->getMessage();
-}
-
-$ceremonyDate = $ceremony->getDate();
-if (isCeremonyOver($ceremonyDate)) {
-    $errorMessage = "Церемонията е приключила на " . explode(" ", $ceremonyDate)[0] . " !";
-    $isCeremonyOver = true;
 } else {
-    $isCeremonyOver = false;
-    $address = $ceremony->getAddress();
-}
+    $fn = $_GET["fn"];
+    $password = $_GET["password"];
+
+    try {
+        $student = new Student($fn, $password);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+
+    $studentName = $student->getName();
+    $studentClass = $student->getClass();
+    $studentFN = $student->getFN();
+
+    try {
+        $ceremony = new Ceremony($student->getClass(), $student->getDegree());
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+
+    $ceremonyDate = $ceremony->getDate();
+    if (isCeremonyOver($ceremonyDate)) {
+        $errorMessage = "Церемонията е приключила на " . explode(" ", $ceremonyDate)[0] . " !";
+        $isCeremonyOver = true;
+    } else {
+        $isCeremonyOver = false;
+        $address = $ceremony->getAddress();
+    }
+
+    $task = new Tasks();
+    $studentIsEnrolled = $task->isStudentEnroll($fn, $studentClass);
 }
