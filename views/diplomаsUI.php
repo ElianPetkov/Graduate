@@ -12,7 +12,7 @@
     <div id="main-container">
         <section id="greetings-container">
             <h1>
-                Добре дошли: <?= $user ?>
+                Добре дошли: 
             </h1>
             
         </section>
@@ -20,6 +20,7 @@
         <thread>
         <tr>
         <th>Факултетен номер</th>
+        <th>Випуск</th>
         <th>Състояние на диплома</th>
         <th> Промени състоянието
         </tr>
@@ -32,7 +33,7 @@
                     echo "<td> ".$val." </td>";
                 }
                 echo '<td>
-                <form action="" method="post">
+                <form action="../logic/diplomаsPage.php" method="POST">
                     <select id="state" name="state">
                         <optgroup>
                             <option value="NotTaken">NotTaken</option>
@@ -40,7 +41,11 @@
                             <option value="Returned">Returned</option>
                         </optgroup>
                     </select> 
-                    <input type="submit" value="Въвеждане" />
+                    <input hidden value='.$row['FN'].' name="fn">
+                    <input hidden value = "Diploma" name = "task">
+                    <input hidden value = '.$row['Class'].' name = "class">
+                    <input type="submit" value="Промени" />
+                </form>
                 </td>';
                 echo "</tr>\n";
             }
