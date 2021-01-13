@@ -23,6 +23,7 @@ require_once '../config/includeClasses.php';
         $class = $_POST['class'];
         $t = new Tasks();
         $t->changeState($fn,$class, $state,$task);
+        header("Location: " . "http://" . $_POST['serverPath']);
     }
 
 ?>

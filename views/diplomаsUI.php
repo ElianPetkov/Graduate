@@ -27,6 +27,7 @@
         </thread>
         <tbody>
         <?php
+        $serverPath = $_SERVER['SERVER_NAME'] . "$_SERVER[REQUEST_URI]";
             foreach($students as $row){
                 echo "<tr>";
                 foreach($row as $key =>$val){
@@ -44,6 +45,7 @@
                     <input hidden value='.$row['FN'].' name="fn">
                     <input hidden value = "Diploma" name = "task">
                     <input hidden value = '.$row['Class'].' name = "class">
+                    <input hidden value='.$serverPath.' name="serverPath">
                     <input type="submit" value="Промени" />
                 </form>
                 </td>';
