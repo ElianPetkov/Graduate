@@ -4,4 +4,8 @@
   
   body {
     font-family: 'Montserrat', sans-serif;
-  }
+    background-image: url("../pictures/student-background.jpg");
+    background-size:contain;
+    text-align: center;
+    margin: 0;
+   }
