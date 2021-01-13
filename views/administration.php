@@ -13,11 +13,10 @@
         <div id="student-ceremony-enroll-container">
             <section id="enroll-ceremony">
                 <form method="POST" action="../logic/administration.php">
-                    <label for="class">Class</label>
+                    <label for="class">Випуск:</label>
                     <input name="class" type="text" />
 
-
-                    <label for="address">Address</label>
+                    <label for="address">Адрес:</label>
                     <input name="address" type="text" />
 
                     <label for="degree">Degree: </label>
@@ -33,8 +32,29 @@
                     <input type="submit" value="Запиши" />
                     <input hidden value="ceremony" name="ceremony">
                 </form>
-
             </section>
+                <section id="enroll-student">
+                    <form method="POST" action="../logic/administration.php">
+
+                        <label for="fN">Факултетен номер:</label>
+                        <input name="fN" type="text" />
+                        <label for="grade">Оценка:</label>
+                        <input name="grade" type="text" />
+                        <label for="password">Парола:</label>
+                        <input name="password" type="text" />
+                        <label for="name">Име:</label>
+                        <input name="name" type="text" />
+                        <label for="class">Випуск:</label>
+                        <input name="class" type="text" />
+                        <label for="degree">Степен на образование:</label>
+                        <input name="degree" type="text" />
+
+                        <input type="submit" value="Запиши" />
+                        <input hidden value="student" name="student">
+
+                    </form>
+                    <div class="clearfix"></div>
+                </section>
         </div>
     </div>
 </body>
