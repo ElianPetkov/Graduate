@@ -26,9 +26,8 @@ class Student
         }
     }
 
-    public function __construct($fn, $password)
+    public function initialize($fn,$password)
     {
-        $this->db = new Db();
         $studentData = $this->getStudent($fn, $password);
         if(is_array($studentData))
         {    
@@ -43,6 +42,11 @@ class Student
         {
             throw new Exception("Student doesn't exists!");
         }
+    }
+    
+    public function __construct()
+    {
+        $this->db = new Db();
     }
 
     public function getName() {
