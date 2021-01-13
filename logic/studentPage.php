@@ -47,11 +47,10 @@ if ($_POST) {
     $studentClass = $student->getClass();
     $studentFN = $student->getFN();
 
-    try {
-        $ceremony = new Ceremony($student->getClass(), $student->getDegree());
-    } catch (Exception $e) {
-        echo $e->getMessage();
-    }
+
+    $ceremony = new Ceremony();
+    $ceremony->initialize($student->getClass(), $student->getDegree());
+ 
 
     $ceremonyDate = $ceremony->getDate();
     if (isCeremonyOver($ceremonyDate)) {

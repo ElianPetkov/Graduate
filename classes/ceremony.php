@@ -25,9 +25,8 @@ class Ceremony
         }
     }
 
-    public function __construct($class, $degree)
+    public function initialize($class, $degree)
     {
-        $this->db = new Db();
         $ceremonyData = $this->getCeremony($class, $degree);
         if(is_array($ceremonyData))
         {    
@@ -40,6 +39,11 @@ class Ceremony
         {
             throw new Exception("Ceremony doesn't exists!");
         }
+    }
+
+    public function __construct()
+    {
+        $this->db = new Db();
     }
 
     public function getClass() {
