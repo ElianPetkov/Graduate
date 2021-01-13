@@ -38,6 +38,18 @@ class Tasks
         $statement->execute([$fn, $class]);
     }
 
+    public function changeState($fn,$class,$state,$task)
+    {
+        if(strcmp($task, "Diploma" ) == 0) {   $update = "UPDATE tasks SET Diploma = ? WHERE FN = ? AND Class = ?";}
+        if(strcmp($task, "Sign" ) == 0) {   $update = "UPDATE tasks SET Sign = ? WHERE FN = ? AND Class = ?";}
+        if(strcmp($task, "Hat" ) == 0) {   $update = "UPDATE tasks SET Hat = ? WHERE FN = ? AND Class = ?";}
+        if(strcmp($task, "Grown" ) == 0) {   $update = "UPDATE tasks SET Grown = ? WHERE FN = ? AND Class = ?";}
+            $conn = $this->db->getConnection();
+            $statement = $conn->prepare($update);
+            $statement->execute([$state, $fn, $class]);
+         
+    }
+
     public function __construct()
     {
         $this->db = new Db();
