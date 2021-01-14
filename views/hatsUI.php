@@ -7,23 +7,24 @@
     <link rel="stylesheet" href="../css/main.css">
     <link href="../pictures/favicon.ico" rel="shortcut icon" type="image/icon" />
     <?php
-        if($role != "diploma") header("Location:../errorPage/404ErrorPage.html");
+        if($role != "hat") header("Location:../errorPage/404ErrorPage.html");
     ?>
 </head>
+
 <body>
     <div id="main-container">
         <section id="greetings-container">
             <h1>
                 Добре дошли: <?= $_SESSION['name'] ?>
             </h1>
-            <p>Вие сте отговорник за дипломи</p>
+            
         </section>
         <table>
         <thread>
         <tr>
         <th>Факултетен номер</th>
         <th>Випуск</th>
-        <th>Състояние на диплома</th>
+        <th>Състояние</th>
         <th> Промени състоянието </th>
         </tr>
         </thread>
@@ -45,7 +46,7 @@
                         </optgroup>
                     </select> 
                     <input hidden value='.$row['FN'].' name="fn">
-                    <input hidden value = "Diploma" name = "task">
+                    <input hidden value = "Hat" name = "task">
                     <input hidden value = '.$row['Class'].' name = "class">
                     <input hidden value='.$serverPath.' name="serverPath">
                     <input type="submit" value="Промени" />

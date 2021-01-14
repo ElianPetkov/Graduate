@@ -59,5 +59,5 @@ if($_SESSION['role'] == 'admin')
     }
 }
 else{
-    header("Location:../views/loginUI.php");
+    header("Location:../errorPage/404ErrorPage.html");
 }

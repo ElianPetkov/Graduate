@@ -7,23 +7,24 @@
     <link rel="stylesheet" href="../css/main.css">
     <link href="../pictures/favicon.ico" rel="shortcut icon" type="image/icon" />
     <?php
-        if($role != "diploma") header("Location:../errorPage/404ErrorPage.html");
+        if($role != "sign") header("Location:../errorPage/404ErrorPage.html");
     ?>
 </head>
+
 <body>
     <div id="main-container">
         <section id="greetings-container">
             <h1>
                 Добре дошли: <?= $_SESSION['name'] ?>
             </h1>
-            <p>Вие сте отговорник за дипломи</p>
+            
         </section>
         <table>
         <thread>
         <tr>
         <th>Факултетен номер</th>
         <th>Випуск</th>
-        <th>Състояние на диплома</th>
+        <th>Подписана</th>
         <th> Промени състоянието </th>
         </tr>
         </thread>
@@ -39,13 +40,12 @@
                 <form action="../logic/diplomаsPage.php" method="POST">
                     <select id="state" name="state">
                         <optgroup>
-                            <option value="NotTaken">NotTaken</option>
-                            <option value="Taken">Taken</option>
-                            <option value="Returned">Returned</option>
+                            <option value="NotSigned">NotSigned</option>
+                            <option value="Signed">Signed</option>
                         </optgroup>
                     </select> 
                     <input hidden value='.$row['FN'].' name="fn">
-                    <input hidden value = "Diploma" name = "task">
+                    <input hidden value = "Sign" name = "task">
                     <input hidden value = '.$row['Class'].' name = "class">
                     <input hidden value='.$serverPath.' name="serverPath">
                     <input type="submit" value="Промени" />
