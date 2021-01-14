@@ -5,8 +5,8 @@ require_once '../config/includeClasses.php';
     session_start();
 
     
-       // $user = $_GET['user'];
-       // $password = $_GET['password'];
+    $user = $_SESSION['user'];
+    // $password = $_GET['password'];
   
 
     $select = "Select FN,Class,Diploma from Tasks";
