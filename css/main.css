@@ -10,3 +10,11 @@
     text-align: center;
     margin: 0;
    }
+
+   #main-container {
+    margin: 1.5rem 0;
+    display: inline-block;
+    width: 50%;
+    background-color: rgb(34, 105, 58);
+    margin: 0;
+}
