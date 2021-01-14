@@ -5,7 +5,7 @@ require_once '../config/includeClasses.php';
     session_start();
 
     
-    $user = $_SESSION['user'];
+
     // $password = $_GET['password'];
   
 
