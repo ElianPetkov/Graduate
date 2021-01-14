@@ -36,7 +36,7 @@
                     echo "<td> ".$val." </td>";
                 }
                 echo '<td>
-                <form action="../logic/diplomаsPage.php" method="POST">
+                <form action="../logic/responsiblePeoplePage.php" method="POST">
                     <select id="state" name="state">
                         <optgroup>
                             <option value="NotTaken">NotTaken</option>
