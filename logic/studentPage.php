@@ -37,8 +37,10 @@ if ($_POST) {
     $fn = $_GET["fn"];
     $password = $_GET["password"];
 
+    
+    $student = new Student();
     try {
-        $student = new Student($fn, $password);
+        $student->initialize($fn, $password);
     } catch (Exception $e) {
         echo $e->getMessage();
     }
@@ -49,7 +51,13 @@ if ($_POST) {
 
 
     $ceremony = new Ceremony();
+    try{
     $ceremony->initialize($student->getClass(), $student->getDegree());
+    }
+    catch(Exception $e)
+    {
+        echo $e->getMessage();
+    }
  
 
     $ceremonyDate = $ceremony->getDate();

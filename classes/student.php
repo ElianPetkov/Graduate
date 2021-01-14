@@ -26,9 +26,16 @@ class Student
         }
     }
 
-    public function __construct($fn, $password)
+    public function createStudent($class, $grade, $name, $degree,$password,$fn)
     {
-        $this->db = new Db();
+        $insert = "INSERT INTO student (Class,Grade,Name,Degree,Password,FN) VALUES (?,?,?,?,?,?)";
+        $conn = $this->db->getConnection();
+        $statement = $conn->prepare($insert);
+        $statement->execute([$class,$grade,$name,$degree,$password,$fn]);
+    }
+
+    public function initialize($fn,$password)
+    {
         $studentData = $this->getStudent($fn, $password);
         if(is_array($studentData))
         {    
@@ -43,6 +50,11 @@ class Student
         {
             throw new Exception("Student doesn't exists!");
         }
+    }
+    
+    public function __construct()
+    {
+        $this->db = new Db();
     }
 
     public function getName() {
