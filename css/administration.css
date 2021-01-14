@@ -58,3 +58,14 @@ input[type=text], select {
   .clearfix {
     clear: both;
   }
+
+  #file-uploader-container{
+    width: 80%;
+    border-radius: 0.3em;
+    display: inline-block;
+    text-align: center;
+    border: 4px solid #0e4f1f;
+    box-shadow: 2px 2px 2px 2px #b4b1b1;
+    margin: 0 0 2em 0;
+
+  }
