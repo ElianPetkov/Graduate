@@ -3,9 +3,6 @@
 require_once '../config/includeClasses.php';
 
     session_start();
-
-    
-
     // $password = $_GET['password'];
   
 
