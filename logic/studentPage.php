@@ -1,6 +1,8 @@
 <?php
 require_once '../config/includeClasses.php';
 
+session_start();
+
 function isCeremonyOver($ceremonyDate)
 {
 
@@ -22,8 +24,8 @@ function isCeremonyOver($ceremonyDate)
 }
 
 if ($_POST) {
-    $fn = $_POST['fn'];
-    $class = $_POST['class'];
+    $fn = $_SESSION['fn'];
+    $class = $_SESSION['class'];
     $task = new Tasks();
     $studentIsEnrolled;
 
@@ -34,11 +36,11 @@ if ($_POST) {
     header("Location: " . "http://" . $_POST['serverPath']);
 
 } else {
-    $fn = $_GET["fn"];
-    $password = $_GET["password"];
+    //$fn = $_SESSION["fn"];
+    $password = $_SESSION["password"];
 
     
-    $student = new Student();
+    /*$student = new Student();
     try {
         $student->initialize($fn, $password);
     } catch (Exception $e) {
@@ -48,11 +50,15 @@ if ($_POST) {
     $studentName = $student->getName();
     $studentClass = $student->getClass();
     $studentFN = $student->getFN();
-
+*/
+    $studentName = $_SESSION['name'];
+    $studentClass = $_SESSION['class'];
+    $studentFN = $_SESSION['fn'];
+    $studentDegree = $_SESSION['degree'];
 
     $ceremony = new Ceremony();
     try{
-    $ceremony->initialize($student->getClass(), $student->getDegree());
+    $ceremony->initialize($studentClass, $studentDegree);
     }
     catch(Exception $e)
     {
@@ -70,5 +76,5 @@ if ($_POST) {
     }
 
     $task = new Tasks();
-    $studentIsEnrolled = $task->isStudentEnroll($fn, $studentClass);
+    $studentIsEnrolled = $task->isStudentEnroll($studentFN, $studentClass);
 }

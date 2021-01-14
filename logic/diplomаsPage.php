@@ -3,9 +3,7 @@
 require_once '../config/includeClasses.php';
 
     session_start();
-    if(isset($_SESSION['user'])) {
-        echo "Your session is running " . $_SESSION['user'];
-    }
+
     
        // $user = $_GET['user'];
        // $password = $_GET['password'];

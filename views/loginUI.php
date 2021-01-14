@@ -12,13 +12,16 @@
     <div id="main-container">
         <section id="greetings-container">
             <h1>
-                Въведете име и парола:
+                Влезте в своя профил:
             </h1>
-            <form  action = "../logic/login.php" method = "POST">
+            <form  action = "loginUI.php" method = "POST">
             <input type = "text" name = "user" placeholder = "Потребителско име" required autofocus></br>
             <input type = "password"  name = "password" placeholder = "Парола" required></br>
-            <input  type = "submit" value = "Login">
+            <input  type = "submit" value = "Вход">
          </form>
+        <?php
+            if($isValid == false) echo '<p>Невалидно потребителско име или парола!</p>';
+        ?>
     </div>
 </body>
 
