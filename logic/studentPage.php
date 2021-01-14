@@ -79,5 +79,5 @@ if($_SESSION['role'] == 'student')
         $studentIsEnrolled = $task->isStudentEnroll($studentFN, $studentClass);
     }
 }else{
-    header("Location:../views/loginUI.php");
+    header("Location:../errorPage/404ErrorPage.html");
 }

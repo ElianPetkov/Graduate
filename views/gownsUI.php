@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="../css/diplomаs.css">
     <link rel="stylesheet" href="../css/main.css">
     <link href="../pictures/favicon.ico" rel="shortcut icon" type="image/icon" />
+    <?php
+        if($role != "gown") header("Location:../errorPage/404ErrorPage.html");
+    ?>
 </head>
 
 <body>

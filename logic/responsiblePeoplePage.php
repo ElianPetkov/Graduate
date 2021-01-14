@@ -10,7 +10,7 @@ require_once '../config/includeClasses.php';
    else if($role == 'sign') $select = "Select FN,Class,Sign from Tasks";
    else if($role == 'hat') $select = "Select FN,Class,Hat from Tasks";
    else if($role == 'gown') $select = "Select FN,Class,Gown from Tasks";
-   else header("Location:../views/loginUI.php");
+   else header("Location:../errorPage/404ErrorPage.html");
     $db = new Db();
     $conn = $db->getConnection();
     $statement = $conn->prepare($select);
