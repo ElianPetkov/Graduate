@@ -14,14 +14,14 @@
             <h1>
                 Добре дошли: <?= $_SESSION['name'] ?>
             </h1>
-            <p>Вие сте отговорник за дипломи</p>
+            
         </section>
         <table>
         <thread>
         <tr>
         <th>Факултетен номер</th>
         <th>Випуск</th>
-        <th>Състояние на диплома</th>
+        <th>Състояние</th>
         <th> Промени състоянието </th>
         </tr>
         </thread>
@@ -43,7 +43,7 @@
                         </optgroup>
                     </select> 
                     <input hidden value='.$row['FN'].' name="fn">
-                    <input hidden value = "Diploma" name = "task">
+                    <input hidden value = "Hat" name = "task">
                     <input hidden value = '.$row['Class'].' name = "class">
                     <input hidden value='.$serverPath.' name="serverPath">
                     <input type="submit" value="Промени" />
