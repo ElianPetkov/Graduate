@@ -1,4 +1,4 @@
-<?php require '../logic/diplomаsPage.php' ?>
+<?php require '../logic/responsiblePeoplePage.php' ?>
 <!DOCTYPE html>
 <html>
 <head>
