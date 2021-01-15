@@ -25,6 +25,30 @@ class Tasks
         }
     }
 
+    public function getStudentOrder($class,$fn)
+    {
+        $select = "SELECT FN FROM tasks Where class=? ORDER BY FN";
+        try {
+            $conn = $this->db->getConnection();
+            $statement = $conn->prepare($select);
+            $statement->execute([$class]);
+            $order = 1;
+            while($data = $statement->fetch())
+            {
+                if($data['FN'] == $fn)
+                {
+                    return $order;
+                }
+                else
+                    $order++;
+            }
+            
+        } catch (PDOException $error) {
+            echo $error->getMessage();
+            return;
+        }
+    }
+
     public function isStudentEnroll($fn,$class)
     {
         return is_array($this->getTasks($fn,$class));

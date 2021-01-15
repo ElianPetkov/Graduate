@@ -69,7 +69,7 @@
                 <h2>Качете CSV файл с данни за студенти</h2>
                     <?php $serverPath = $_SERVER['SERVER_NAME'] . "$_SERVER[REQUEST_URI]"; ?>
                 <form enctype="multipart/form-data" action="../logic/administration.php" method="POST">
-                    <input type="file" name="file" id="file" accept=".csv" />
+                    <input type="file" name="file" id="file-uploaded" accept=".csv" />
                     <input type="submit" name="Качи файл" />
                     <input hidden value="<?= $serverPath ?>" name="serverPath">
                 </form>
