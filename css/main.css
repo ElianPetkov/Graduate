@@ -1,20 +1,21 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 
-  }
-  
-  body {
-    font-family: cursive;
-    background-image: url("../pictures/student-background.jpg");
-    background-size:contain;
-    text-align: center;
-    margin: 0;
-   }
+}
 
-   #main-container {
-    margin: 1.5rem 0;
-    display: inline-block;
-    width: 50%;
-    background-color: rgb(57 50 50 / 86%);
-    margin: 0;
+body {
+  font-family: cursive;
+  background-image: url("../pictures/students-background.jpg");
+  background-size: contain;
+  background-size: cover;
+  text-align: center;
+  margin: 0;
+}
+
+#main-container {
+  margin: 1.5rem 0;
+  display: inline-block;
+  width: 50%;
+  background-color: rgb(57 50 50 / 86%);
+  margin: 0;
 }
