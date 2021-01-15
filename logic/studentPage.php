@@ -63,7 +63,6 @@ if ($_SESSION['role'] == 'student') {
         if (isCeremonyOver($ceremonyDate)) {
             $errorMessage = "Церемонията е приключила на " . explode(" ", $ceremonyDate)[0] . " !";
             $isCeremonyOver = true;
-            exit;
         } else {
             $isCeremonyOver = false;
             $address = $ceremony->getAddress();
