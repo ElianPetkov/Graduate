@@ -41,7 +41,6 @@
                         <optgroup>
                             <option value="NotTaken">NotTaken</option>
                             <option value="Taken">Taken</option>
-                            <option value="Returned">Returned</option>
                         </optgroup>
                     </select> 
                     <input hidden value='.$row['FN'].' name="fn">
