@@ -70,7 +70,7 @@
                     <?php $serverPath = $_SERVER['SERVER_NAME'] . "$_SERVER[REQUEST_URI]"; ?>
                 <form enctype="multipart/form-data" action="../logic/administration.php" method="POST">
                     <input type="file" name="file" id="file-uploaded" accept=".csv" />
-                    <input type="submit" name="Качи файл" />
+                    <input type="submit" name="Качи файл" value="Запиши" />
                     <input hidden value="<?= $serverPath ?>" name="serverPath">
                 </form>
             </section>
