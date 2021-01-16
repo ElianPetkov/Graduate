@@ -1,0 +1,35 @@
+CREATE DATABASE Graduate;
+
+CREATE TABLE ceremony (
+ Class int(11) NOT NULL,
+ Degree enum('Bachelor','Master','Doctorate','') NOT NULL,
+ Address varchar(64) NOT NULL,
+ Date datetime NOT NULL,
+ PRIMARY KEY (Class,Degree)
+);
+
+CREATE TABLE student (
+ FN int(11) NOT NULL,
+ Name varchar(64) NOT NULL,
+ Grade double NOT NULL,
+ Password varchar(64) NOT NULL,
+ Degree enum('Bachelor','Master','Doctorate','') NOT NULL,
+ Class int(11) NOT NULL,
+ PRIMARY KEY (FN,Class),
+ KEY Degree (Degree,Class),
+ KEY foreignkey_c (Class,Degree),
+ CONSTRAINT foreignkey_c FOREIGN KEY (Class, Degree) REFERENCES ceremony (Class, Degree) ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+
+CREATE TABLE tasks (
+ FN int(11) NOT NULL,
+ Class int(11) NOT NULL,
+ Diploma enum('NotTaken','Taken','Returned') NOT NULL DEFAULT 'NotTaken',
+ Sign enum('NotSigned','Signed') NOT NULL DEFAULT 'NotSigned',
+ Hat enum('NotTaken','Taken','Returned') NOT NULL DEFAULT 'NotTaken',
+ Gown enum('NotTaken','Taken','Returned') NOT NULL DEFAULT 'NotTaken',
+ PRIMARY KEY (FN,Class),
+ KEY FN (FN),
+ KEY Class (Class),
+ CONSTRAINT foreignkey_student FOREIGN KEY (FN, Class) REFERENCES student (FN, Class) ON DELETE NO ACTION ON UPDATE NO ACTION
+);

@@ -1,7 +1,0 @@
-This is a test file.
-
-Hello hello hello.
-Maybe it's a conflict.
-
-First conflict.
-
