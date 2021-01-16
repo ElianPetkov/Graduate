@@ -3,7 +3,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="../css/student.css">
-    <link rel="stylesheet" href="../css/diplomаs.css">
+    <link rel="stylesheet" href="../css/responsibility.css">
     <link rel="stylesheet" href="../css/main.css">
     <link href="../pictures/favicon.ico" rel="shortcut icon" type="image/icon" />
     <?php
@@ -17,9 +17,10 @@
             <h1>
                 Добре дошли: <?= $_SESSION['name'] ?>
             </h1>
-            
+            <p id = "responsibility">Вие сте отговорник за подписването за взета диплома на абсолвент. Вашата задача е да отразите, когато даден абсолвент се подпише, че си е взел дипломата. </p>
+        
         </section>
-        <table>
+        <table id ="table">
         <thread>
         <tr>
         <th>Факултетен номер</th>
@@ -48,7 +49,7 @@
                     <input hidden value = "Sign" name = "task">
                     <input hidden value = '.$row['Class'].' name = "class">
                     <input hidden value='.$serverPath.' name="serverPath">
-                    <input type="submit" value="Промени" />
+                    <input type="submit" id = "button" value="Промени" />
                 </form>
                 </td>';
                 echo "</tr>\n";

@@ -3,7 +3,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="../css/student.css">
-    <link rel="stylesheet" href="../css/diplomаs.css">
+    <link rel="stylesheet" href="../css/responsibility.css">
     <link rel="stylesheet" href="../css/main.css">
     <link href="../pictures/favicon.ico" rel="shortcut icon" type="image/icon" />
     <?php
@@ -16,9 +16,9 @@
             <h1>
                 Добре дошли: <?= $_SESSION['name'] ?>
             </h1>
-            <p>Вие сте отговорник за дипломи</p>
+            <p id = "responsibility">Вие сте отговорник за раздаването на дипломи на абсолвентите. Вашата задача е да дадете на всеки абсолвент дипломата му и да запишете, че той си е получил дипломата. </p>
         </section>
-        <table>
+        <table id ="table">
         <thread>
         <tr>
         <th>Факултетен номер</th>
@@ -48,7 +48,7 @@
                     <input hidden value = "Diploma" name = "task">
                     <input hidden value = '.$row['Class'].' name = "class">
                     <input hidden value='.$serverPath.' name="serverPath">
-                    <input type="submit" value="Промени" />
+                    <input type="submit" id = "button" value="Промени" />
                 </form>
                 </td>';
                 echo "</tr>\n";
