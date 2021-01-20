@@ -22,18 +22,27 @@ if($_SESSION['role'] == 'admin')
     if ($_POST && isset($_POST['student'])) {
         $class = $_POST['class'];
         $degree = $_POST['degree'];
-        $name = $_POST['name'];
         $password = $_POST['password'];
         $grade = $_POST['grade'];
         $fn = $_POST['fn'];
+        if(isset($diplomaNumber))
+            $diplomaNumber = $_POST['dipolmaNumber'];
+        else
+            $diplomaNumber = null;
+        $firstName = $_POST['firstName'];
+        $lastName = $_POST['lastName'];
+        $faculty = $_POST['faculty'];
+        $group = $_POST['group'];
+        $curriculum = $_POST['curriculum'];
 
         $student = new Student();
-        $student->createStudent($class, $grade, $name, $degree, $password, $fn);
+        $student->createStudent($class,$curriculum, $grade, $firstName,$lastName,$faculty,$group,$degree,$password,$fn,$diplomaNumber);
+        header("Location: " . "http://" . $_POST['serverPath']);
     }
 
     function enrollStudent($data)
     {
-                $containerForCVSData = array(0=>"", 1=>"", 2=>"",3=>"",4=>"",5=>"");//0->fn,1->name,2->password,3->class,4->grade,5->degree
+                $containerForCVSData = array(0=>"", 1=>"", 2=>"",3=>"",4=>"",5=>"",6=>"",7=>"",8=>"",9=>"",10=>"");//0->fn,1->firstName,2->lastName,3->password,4->class,5->grade,6->Degree,7->faculty,8->group,9->curriculum,10->diploma number
                 $numberOfCharactersOnCurrentLine = count($data);
                 $fieldsArrayCounter = 0;
                 for ($currentCharacter = 0; $currentCharacter < $numberOfCharactersOnCurrentLine; $currentCharacter++) {
@@ -41,9 +50,9 @@ if($_SESSION['role'] == 'admin')
                         $fieldsArrayCounter++;
                 }
                 $student = new Student();
-                $student->createStudent($containerForCVSData[3],$containerForCVSData[4],
-                                        $containerForCVSData[1],$containerForCVSData[5],
-                                        $containerForCVSData[2],$containerForCVSData[0]);//optimize
+                $student->createStudent($containerForCVSData[4],$containerForCVSData[9],$containerForCVSData[5],$containerForCVSData[1],$containerForCVSData[2],
+                                        $containerForCVSData[7],$containerForCVSData[8],$containerForCVSData[6],$containerForCVSData[3],$containerForCVSData[0],
+                                        $containerForCVSData[10]);//optimize
     }
 
     if ($_POST && isset($_POST['serverPath'])) {

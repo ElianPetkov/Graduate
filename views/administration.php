@@ -57,14 +57,34 @@
 
                     <label for="fn">Факултетен номер:</label>
                     <input name="fn" type="text" />
+
+                    <label for="curriculum">Специалност:</label>
+                    <input name="curriculum" type="text" />
+
+                    <label for="group">Група на студента:</label>
+                    <input name="group" type="text" />
+
+                    <label for="faculty">Факултет:</label>
+                    <input name="faculty" type="text" />
+
                     <label for="grade">Оценка:</label>
                     <input name="grade" type="text" />
+
                     <label for="password">Парола:</label>
                     <input name="password" type="text" />
-                    <label for="name">Име:</label>
-                    <input name="name" type="text" />
+
+                    <label for="firstName">Име:</label>
+                    <input name="firstName" type="text" />
+
+                    <label for="lastName">Фамилия:</label>
+                    <input name="lastName" type="text" />
+
+                    <label for="diplomaNumber">Номер на диплома:</label>
+                    <input name="diplomaNumber" type="text" />
+
                     <label for="class">Випуск:</label>
                     <input name="class" type="text" />
+
                     <label for="degree">Степен на образование:</label>
                     <select name="degree">
                         <option value="Bachelor">Bachelor</option>

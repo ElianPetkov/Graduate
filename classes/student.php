@@ -26,12 +26,13 @@ class Student
         }
     }
 
-    public function createStudent($class, $grade, $name, $degree,$password,$fn)
+    public function createStudent($class,$curriculum, $grade, $firstName,$lastName,$faculty,$group,$degree,$password,$fn,$diplomaNumber)
     {
-        $insert = "INSERT INTO student (Class,Grade,Name,Degree,Password,FN) VALUES (?,?,?,?,?,?)";
+        $insert = "INSERT INTO `student` (`FN`, `Curriculum`, `Class`, `Student_group`, `Faculty`, `Degree`, `First_name`, `Last_name`, `Password`, `Diploma_number`, `Grade`) 
+                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
         $conn = $this->db->getConnection();
         $statement = $conn->prepare($insert);
-        $statement->execute([$class,$grade,$name,$degree,$password,$fn]);
+        $statement->execute([$fn,$curriculum,$class,$group,$faculty,$degree,$firstName,$lastName,$password,$diplomaNumber,$grade]);
     }
 
     public function initialize($fn,$password)
