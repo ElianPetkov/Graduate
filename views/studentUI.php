@@ -14,7 +14,7 @@
     <div id="main-container">
         <section id="greetings-container">
             <h1>
-                Добре дошли: <?= $studentName ?>
+                Добре дошли: <?= $studentFistName ?> <?= $studentLastName ?>
             </h1>
 
             <div id="pic-container">
@@ -30,12 +30,12 @@
                 <h2>Информация за предстоящата церемония</h2>
                 <hr>
             <p>
-                В $ceremonyDate   на адрес $address  ще се състои церемония по връчване на дипломи. Моля отбележете дали ще присъствате на церемонията като подвърдите чрез натискане на бутона.
+                В $ceremonyDate на адрес <a href=$googleLink target=`_blank` style=color:white>$address</a>  ще се състои церемония по връчване на дипломи. Моля отбележете дали ще присъствате на церемонията като подвърдите чрез натискане на бутона.
             </p>";
             ?>
                 <div id="button-container">
                     <form action="../logic/studentPage.php" method="POST">
-                        <button id="invite-button" style="display: <?php echo ($studentIsEnrolled ? "none" : "") ?>" type="submit">Ще присъствам</button>
+                        <button id="invite-button" style="display: <?php echo ($isStudentEnrolledToCeremony ? "none" : "") ?>" type="submit">Ще присъствам</button>
                         <input hidden value="<?= $studentClass ?>" name="class">
                         <input hidden value="<?= $studentFN ?>" name="fn">
                         <input hidden value="<?= $serverPath ?>" name="serverPath">
@@ -43,7 +43,7 @@
                 </div>
                 <div class="enrollMessage">
                     <?php
-                    if (isset($studentIsEnrolled) && $studentIsEnrolled){
+                    if (isset($isStudentEnrolledToCeremony) && $isStudentEnrolledToCeremony){
                         echo "
                         <hr>
                      <p>
@@ -65,10 +65,10 @@
         <section id="additional-information-container">
             <h2>Важна информация за присъстващите на церемонията!</h2>
             <?php
-                    if (isset($studentIsEnrolled) && $studentIsEnrolled){
+                    if (isset($isStudentEnrolledToCeremony) && $isStudentEnrolledToCeremony){
                         echo "
                         <hr>        
-                        <p>Вие сте $studentOrder по ред за получване на диплома. Моля бъдете готови не по-късно от $timeToTakeDiplomaStudent часа да ви се връчи дипломата.</p>";
+                        <p>Вие сте <ред> по ред за получване на диплома. Моля бъдете готови не по-късно от <време> часа да ви се връчи дипломата.</p>";
                     }
                     ?>
             <hr>

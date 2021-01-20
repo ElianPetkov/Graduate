@@ -5,12 +5,27 @@ class Student
 {
     private $fn;
     private $password;
-    private $name;
+    private $firstName;
+    private $lastName;
+    private $faculty;
+    private $group;
+    private $curriculum;
+    private $diplomaNumber;
     private $grade;
     private $class;
     private $degree;
+    private $isParticipating;
 
     private $db;
+
+    public function enrollStudent($studentFn) {
+        $update = "UPDATE `student` SET `Participation` = '1' WHERE FN = ?";
+        $conn = $this->db->getConnection();
+        $statement = $conn->prepare($update);
+        $statement->execute([$studentFn]);
+
+        $this->isParticipating = true;
+    }
 
     public function getStudent($fn, $password)
     {
@@ -42,10 +57,15 @@ class Student
         {    
         $this->fn = $studentData['FN'];
         $this->password = $studentData['Password'];
-        $this->name = $studentData['Name'];
+        $this->firstName = $studentData['First_name'];
+        $this->lastName = $studentData['Last_name'];
+        $this->group = $studentData['Student_group'];
+        $this->faculty = $studentData['Faculty'];
+        $this->curriculum = $studentData['Curriculum'];
         $this->grade = $studentData['Grade'];
         $this->class = $studentData['Class'];
         $this->degree = $studentData['Degree'];
+        $this->isParticipating = $studentData['Participation'];
         }
         else
         {
@@ -80,5 +100,18 @@ class Student
 
     public function getDegree() {
         return $this->degree;
+    }
+
+    public function getCurriculum() {
+        return $this->curriculum;
+    }
+    public function getStudentFirstName() {
+        return $this->firstName;
+    }
+    public function getStudentLastName() {
+        return $this->lastName;
+    }
+    public function getIsParticipation() {
+        return $this->isParticipating;
     }
 }

@@ -5,19 +5,24 @@ require_once '../config/includeClasses.php';
 class Ceremony
 {
     private $class;
-    private $degree;
+    private $curriculum;
+    private $googleLink;
+    private $duration;
+    //private $degree;
     private $address;
     private $date;
+    private $capacity;
+
     private $db;
 
 
-    public function getCeremony($class, $degree)
+    public function getCeremony($class, $Curriculum )
     {
-        $select = "Select * From Ceremony Where class=? AND degree=?";
+        $select = "Select * From Ceremony Where class=? AND Curriculum=?";
         try {
             $conn = $this->db->getConnection();
             $statement = $conn->prepare($select);
-            $statement->execute([$class, $degree]);
+            $statement->execute([$class, $Curriculum ]);
             return $statement->fetch();
         } catch (PDOException $error) {
             echo $error->getMessage();
@@ -25,15 +30,19 @@ class Ceremony
         }
     }
 
-    public function initialize($class, $degree)
+    public function initialize($class, $Curriculum)
     {
-        $ceremonyData = $this->getCeremony($class, $degree);
+        $ceremonyData = $this->getCeremony($class, $Curriculum);
         if(is_array($ceremonyData))
         {    
         $this->class = $ceremonyData['Class'];
-        $this->degree = $ceremonyData['Degree'];
+        //$this->degree = $ceremonyData['Degree'];
         $this->address = $ceremonyData['Address'];
-        $this->date = $ceremonyData['Date'];
+        $this->date = $ceremonyData['Start_time'];
+        $this->duration = $ceremonyData['Duration'];
+        $this->googleLink = $ceremonyData['Map_link'];
+        $this->curriculum = $ceremonyData['Curriculum'];
+        $this->capacity = $ceremonyData['Capacity'];
         }
         else
         {
@@ -68,6 +77,11 @@ class Ceremony
 
     public function getDate() {
         return $this->date;
+    }
+
+    public function getGoogleLink()
+    {
+        return $this->googleLink;
     }
 }
 

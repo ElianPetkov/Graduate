@@ -15,11 +15,7 @@ if (!empty($_POST['user']) && !empty($_POST['password'])) {
     if(is_array($studentData))
     {
         $_SESSION['fn'] = $user;
-        $_SESSION['name'] = $studentData['Name'];
         $_SESSION['password'] = $studentData['Password'];
-        $_SESSION['grade'] = $studentData['Grade'];
-        $_SESSION['class'] = $studentData['Class'];
-        $_SESSION['degree'] = $studentData['Degree'];
         $_SESSION['role'] = "student";
         header("Location:../views/studentUI.php");
     }

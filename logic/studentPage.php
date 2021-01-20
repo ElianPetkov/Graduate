@@ -34,26 +34,39 @@ if ($_SESSION['role'] == 'student') {
     }
 
     if ($_POST) {
+        //проверка дали студента е записан ако не е се записва в задачите
         $fn = $_SESSION['fn'];
-        $class = $_SESSION['class'];
-        $task = new Tasks();
-        $studentIsEnrolled;
+        $password = $_SESSION['password'];
 
-        if (!$task->isStudentEnroll($fn, $class)) {
-            $task->enrollStudent($fn, $class);
+        $student = new Student();
+        $student->initialize($fn,$password);
+        $class = $student->getClass();
+
+        $isStudentEnrolledToCeremony = $student->getIsParticipation();
+
+        if (!$isStudentEnrolledToCeremony) {
+            //TODO enroll in all tasks
+            //And give order number
+            $student->enrollStudent($fn);
         }
 
         header("Location: " . "http://" . $_POST['serverPath']);
     } else {
-        $password = $_SESSION["password"];
-        $studentName = $_SESSION['name'];
-        $studentClass = $_SESSION['class'];
-        $studentFN = $_SESSION['fn'];
-        $studentDegree = $_SESSION['degree'];
+        $fn = $_SESSION['fn'];
+        $password = $_SESSION['password'];
+
+        $student = new Student();
+        $student->initialize($fn,$password);
+        $studentClass = $student->getClass();
+
+        /*variables used in UI*/
+        $studentFistName = $student->getStudentFirstName();
+        $studentLastName = $student->getStudentLastName();
+        /**/
 
         $ceremony = new Ceremony();
         try {
-            $ceremony->initialize($studentClass, $studentDegree);
+            $ceremony->initialize($studentClass, $student->getCurriculum());
         } catch (Exception $e) {
             echo $e->getMessage();
         }
@@ -65,14 +78,18 @@ if ($_SESSION['role'] == 'student') {
             $isCeremonyOver = true;
         } else {
             $isCeremonyOver = false;
+            /*variables used in UI*/
+            $googleLink = $ceremony->getGoogleLink();
             $address = $ceremony->getAddress();
+            /**/
         }
 
-        $task = new Tasks();
-        $studentIsEnrolled = $task->isStudentEnroll($studentFN, $studentClass);
+       
+        $isStudentEnrolledToCeremony = $student->getIsParticipation();
 
-        $studentOrder = $task->getStudentOrder($studentClass, $studentFN);
-        $timeToTakeDiplomaStudent = studentWillGetDiplomaAt($ceremonyDate, $studentOrder);
+        //оптимизации за ред на студента и ориентировачно време
+        //$studentOrder = $task->getStudentOrder($studentClass, $fn);
+        //$timeToTakeDiplomaStudent = studentWillGetDiplomaAt($ceremonyDate, $studentOrder);
     }
 } else {
     header("Location:../errorPage/404ErrorPage.html");
