@@ -5,13 +5,18 @@ if($_SESSION['role'] == 'admin')
 {
     if ($_POST && isset($_POST['ceremony'])) {
         $class = $_POST['class'];
-        $degree = $_POST['degree'];
+        // $degree = $_POST['degree'];
         $address = $_POST['address'];
+        $googleLink = $_POST['google-maps-link'];
+        $capacity = $_POST['capacity'];
+        $duration = $_POST['duration'];
+        $curriculum = $_POST['curriculum'];
         $dateTime = $_POST['dateTime'];
         $newDate = str_replace('T', ' ', $dateTime) . ":00";
 
         $ceremony = new Ceremony();
-        $ceremony->makeCeremony($class, $address, $newDate, $degree);
+        $ceremony->makeCeremony($class,$curriculum, $address, $dateTime,$googleLink,$duration,$capacity);
+        header("Location: " . "http://" . $_POST['serverPath']);
     }
 
     if ($_POST && isset($_POST['student'])) {

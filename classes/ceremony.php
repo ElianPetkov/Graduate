@@ -41,12 +41,12 @@ class Ceremony
         }
     }
 
-    public function makeCeremony($class, $address, $dateTime, $degree)
+    public function makeCeremony($class,$curriculum, $address, $dateTime,$googleLink,$duration,$capacity)
     {
-        $insert = "INSERT INTO ceremony (Class,Address,Date,Degree) VALUES (?,?,?,?)";
+        $insert = "INSERT INTO `ceremony` (`Curriculum`, `Class`, `Start_time`, `Duration`, `Address`, `Capacity`, `Map_link`) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $conn = $this->db->getConnection();
         $statement = $conn->prepare($insert);
-        $statement->execute([$class,$address,$dateTime,$degree]);
+        $statement->execute([$curriculum,$class,$dateTime,$duration,$address,$capacity,$googleLink]);
     }
 
     public function __construct()

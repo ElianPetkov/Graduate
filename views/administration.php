@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <?php $serverPath = $_SERVER['SERVER_NAME'] . "$_SERVER[REQUEST_URI]"; ?>
     <div id="main-container">
         <div id="student-ceremony-enroll-container">
             <section id="enroll-ceremony">
@@ -18,21 +19,35 @@
                     <label for="class">Випуск:</label>
                     <input name="class" type="text" />
 
+                    <label for="curriculum">Специалност:</label>
+                    <input name="curriculum" type="text" />
+
+                    <label for="duration">Продължителност:</label>
+                    <input name="duration" type="text" />
+
+                    <label for="capacity">Свободни места:</label>
+                    <input name="capacity" type="text" />
+
                     <label for="address">Адрес:</label>
                     <input name="address" type="text" />
 
-                    <label for="degree">Degree: </label>
+                    <!-- <label for="degree">Degree: </label>
                     <select name="degree">
                         <option value="Bachelor">Bachelor</option>
                         <option value="Master">Master</option>
                         <option value="Doctorate">Doctorate</option>
-                    </select>
+                    </select> -->
+
+                    <label for="google-maps-link">Линк към Google maps:</label>
+                    <input name="google-maps-link" type="text" />
 
                     <label for="dateTime">Дата и час на събитието:</label>
                     <input type="datetime-local" name="dateTime" value="2021-01-13T19:30">
 
                     <input type="submit" value="Запиши" />
                     <input hidden value="ceremony" name="ceremony">
+                    <input hidden value="<?= $serverPath ?>" name="serverPath">
+
                 </form>
             </section>
             <section id="enroll-student">
@@ -59,6 +74,7 @@
 
                     <input type="submit" value="Запиши" />
                     <input hidden value="student" name="student">
+                    <input hidden value="<?= $serverPath ?>" name="serverPath">
 
                 </form>
                 <div class="clearfix"></div>
@@ -67,7 +83,6 @@
         <div id="file-uploader-container">
             <section id="file-upload">
                 <h2>Качете CSV файл с данни за студенти</h2>
-                    <?php $serverPath = $_SERVER['SERVER_NAME'] . "$_SERVER[REQUEST_URI]"; ?>
                 <form enctype="multipart/form-data" action="../logic/administration.php" method="POST">
                     <input type="file" name="file" id="file-uploaded" accept=".csv" />
                     <input type="submit" name="Качи файл" value="Запиши" />
