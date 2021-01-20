@@ -12,6 +12,7 @@ CREATE TABLE `ceremony` (
  KEY `Curriculum` (`Curriculum`,`Class`)
 );
 
+	
 CREATE TABLE `student` (
  `FN` int(11) NOT NULL,
  `Curriculum` varchar(64) NOT NULL,
@@ -22,7 +23,7 @@ CREATE TABLE `student` (
  `First_name` varchar(64) NOT NULL,
  `Last_name` varchar(64) NOT NULL,
  `Password` varchar(64) NOT NULL,
- `Participation` tinyint(1) NOT NULL DEFAULT 0,
+ `Participation` tinyint(1) DEFAULT 0,
  `Diploma_number` varchar(10) DEFAULT NULL,
  `Grade` double NOT NULL,
  `Participation_order` int(11) DEFAULT NULL,
