@@ -1,35 +1,80 @@
-CREATE DATABASE Graduate;
+CREATE DATABASE Graduate2;
 
-CREATE TABLE ceremony (
- Class int(11) NOT NULL,
- Degree enum('Bachelor','Master','Doctorate','') NOT NULL,
- Address varchar(64) NOT NULL,
- Date datetime NOT NULL,
- PRIMARY KEY (Class,Degree)
+CREATE TABLE `ceremony` (
+ `Curriculum` varchar(64) NOT NULL,
+ `Class` int(11) NOT NULL,
+ `Start_time` datetime NOT NULL,
+ `Duration` double NOT NULL,
+ `Address` varchar(64) NOT NULL,
+ `Capacity` int(11) NOT NULL,
+ `Map_link` varchar(128) NOT NULL,
+ PRIMARY KEY (`Curriculum`,`Class`),
+ KEY `Curriculum` (`Curriculum`,`Class`)
 );
 
-CREATE TABLE student (
- FN int(11) NOT NULL,
- Name varchar(64) NOT NULL,
- Grade double NOT NULL,
- Password varchar(64) NOT NULL,
- Degree enum('Bachelor','Master','Doctorate','') NOT NULL,
- Class int(11) NOT NULL,
- PRIMARY KEY (FN,Class),
- KEY Degree (Degree,Class),
- KEY foreignkey_c (Class,Degree),
- CONSTRAINT foreignkey_c FOREIGN KEY (Class, Degree) REFERENCES ceremony (Class, Degree) ON DELETE NO ACTION ON UPDATE NO ACTION
+CREATE TABLE `student` (
+ `FN` int(11) NOT NULL,
+ `Curriculum` varchar(64) NOT NULL,
+ `Class` int(11) NOT NULL,
+ `Student_group` int(11) NOT NULL,
+ `Faculty` varchar(64) NOT NULL,
+ `Degree` enum('Bachelor','Master','Doctorate') NOT NULL,
+ `First_name` varchar(64) NOT NULL,
+ `Last_name` varchar(64) NOT NULL,
+ `Password` varchar(64) NOT NULL,
+ `Participation` tinyint(1) NOT NULL DEFAULT 0,
+ `Diploma_number` varchar(10) DEFAULT NULL,
+ `Grade` double NOT NULL,
+ `Participation_order` int(11) DEFAULT NULL,
+ PRIMARY KEY (`FN`),
+ KEY `Curriculum` (`Curriculum`,`Class`),
+ CONSTRAINT `foreignkey_student` FOREIGN KEY (`Curriculum`, `Class`) REFERENCES `ceremony` (`Curriculum`, `Class`) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-CREATE TABLE tasks (
+CREATE TABLE `gown` (
+ `FN` int(11) NOT NULL,
+ `Class` int(11) NOT NULL,
+ `Curriculum` varchar(64) NOT NULL,
+ `State` enum('NotTaken','Taken','Returned') NOT NULL DEFAULT 'NotTaken',
+ `Last_change_date` datetime DEFAULT NULL,
+ `Comment` varchar(128) DEFAULT NULL,
+ PRIMARY KEY (`FN`),
+ KEY `FN` (`FN`),
+ CONSTRAINT `foreignkey_gown` FOREIGN KEY (`FN`) REFERENCES `student` (`FN`) ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+
+CREATE TABLE sign (
  FN int(11) NOT NULL,
  Class int(11) NOT NULL,
- Diploma enum('NotTaken','Taken','Returned') NOT NULL DEFAULT 'NotTaken',
- Sign enum('NotSigned','Signed') NOT NULL DEFAULT 'NotSigned',
- Hat enum('NotTaken','Taken','Returned') NOT NULL DEFAULT 'NotTaken',
- Gown enum('NotTaken','Taken','Returned') NOT NULL DEFAULT 'NotTaken',
- PRIMARY KEY (FN,Class),
+ Curriculum varchar(64) NOT NULL,
+ State enum('NotSigned','Signed') NOT NULL DEFAULT 'NotSigned',
+ Last_change_date datetime DEFAULT NULL,
+ Comment varchar(128) DEFAULT NULL,
+ PRIMARY KEY (FN),
  KEY FN (FN),
- KEY Class (Class),
- CONSTRAINT foreignkey_student FOREIGN KEY (FN, Class) REFERENCES student (FN, Class) ON DELETE NO ACTION ON UPDATE NO ACTION
+ CONSTRAINT sign_ibfk_1 FOREIGN KEY (FN) REFERENCES student (FN) ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+
+CREATE TABLE diploma (
+ FN int(11) NOT NULL,
+ Class int(11) NOT NULL,
+ Curriculum varchar(64) NOT NULL,
+ State enum('NotTaken','Taken') NOT NULL DEFAULT 'NotTaken',
+ Last_change_date datetime DEFAULT NULL,
+ Comment varchar(128) DEFAULT NULL,
+ PRIMARY KEY (FN),
+ KEY FN (FN),
+ CONSTRAINT foreignkey_diploma FOREIGN KEY (FN) REFERENCES student (FN) ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+
+CREATE TABLE hat (
+ FN int(11) NOT NULL,
+ Class int(11) NOT NULL,
+ Curriculum varchar(64) NOT NULL,
+ State enum('NotTaken','Taken','Returned') NOT NULL DEFAULT 'NotTaken',
+ Last_change_date datetime DEFAULT NULL,
+ Comment varchar(128) DEFAULT NULL,
+ PRIMARY KEY (FN),
+ KEY FN (FN),
+ CONSTRAINT hat_ibfk_1 FOREIGN KEY (FN) REFERENCES student (FN) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
