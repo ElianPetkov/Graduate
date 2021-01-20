@@ -15,8 +15,58 @@ class Student
     private $class;
     private $degree;
     private $isParticipating;
+    private $participationOrder;
 
     private $db;
+
+    private function findStudentOrder()
+    {
+        $select = "SELECT FN FROM student Where class=? AND Curriculum = ? AND Participation = 1 ORDER BY FN";
+        try {
+            $conn = $this->db->getConnection();
+            $statement = $conn->prepare($select);
+            $statement->execute([$this->class,$this->curriculum]);
+            $order = 1;
+            while($data = $statement->fetch())
+            {
+                if($data['FN'] == $this->fn)
+                {
+                    return $order;
+                }
+                else
+                    $order++;
+            }
+            
+        } catch (PDOException $error) {
+            echo $error->getMessage();
+            return;
+        }
+    }
+
+    private function setStudentOrder()
+    {
+        $studentOrder = $this->findStudentOrder();
+
+        $update = "UPDATE `student` SET `Participation_order` =".$studentOrder. "WHERE FN = ".$this->fn;
+        $conn = $this->db->getConnection();
+        $statement = $conn->prepare($update);
+        $statement->execute([]);
+
+        $this->participationOrder = $studentOrder;
+    }
+
+    public function getStudentOrder()
+    {
+        if(isset($this->participationOrder))
+            return $this->participationOrder;
+        else
+        {
+            $this->setStudentOrder();
+            return $this->participationOrder;
+        }
+
+    }
+
 
     public function enrollStudent($studentFn) {
         $update = "UPDATE `student` SET `Participation` = '1' WHERE FN = ?";
@@ -66,6 +116,10 @@ class Student
         $this->class = $studentData['Class'];
         $this->degree = $studentData['Degree'];
         $this->isParticipating = $studentData['Participation'];
+        if(isset($studentData['Participation_order']))
+            $this->participationOrder = $studentData['Participation_order'];
+        else
+            $this->participationOrder = null;
         }
         else
         {

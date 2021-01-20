@@ -68,7 +68,7 @@
                     if (isset($isStudentEnrolledToCeremony) && $isStudentEnrolledToCeremony){
                         echo "
                         <hr>        
-                        <p>Вие сте <ред> по ред за получване на диплома. Моля бъдете готови не по-късно от <време> часа да ви се връчи дипломата.</p>";
+                        <p>Вие сте $studentOrder по ред за получване на диплома. Моля бъдете готови не по-късно от $timeToTakeDiplomaStudent часа да ви се връчи дипломата.</p>";
                     }
                     ?>
             <hr>
