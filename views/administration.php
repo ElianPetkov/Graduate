@@ -50,6 +50,7 @@
 
                 </form>
             </section>
+
             <section id="enroll-student">
                 <h1>Добавяне на студент</h1>
                 <hr>
@@ -106,6 +107,21 @@
                 <form enctype="multipart/form-data" action="../logic/administration.php" method="POST">
                     <input type="file" name="file" id="file-uploaded" accept=".csv" />
                     <input type="submit" name="Качи файл" value="Запиши" />
+                    <input hidden value="<?= $serverPath ?>" name="serverPath">
+                </form>
+            </section>
+        </div>
+        <hr>
+        <div id="move-student-order-container">
+            <section id="move-student-order">
+                <h3>Попълнете факултетния номер на студента изпуснал реда си за да го преместите на последно място по ред</h3>
+                <hr>
+                <form method="POST" action="../logic/administration.php">
+                    <label for="Fn">Факултетен номер:</label>
+                    <input name="Fn" type="text" />
+
+                    <input type="submit" value="Премести" />
+                    <input hidden value="move-student-order" name="move-student-order">
                     <input hidden value="<?= $serverPath ?>" name="serverPath">
                 </form>
             </section>
