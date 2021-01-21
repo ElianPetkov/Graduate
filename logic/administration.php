@@ -55,7 +55,7 @@ if($_SESSION['role'] == 'admin')
                                         $containerForCVSData[10]);//optimize
     }
 
-    if ($_POST && isset($_POST['serverPath'])) {
+    if ($_POST && isset($_POST['file'])) {
         $skipFirstTwoLinesFromFile = 0;
         if (($handle = fopen($_FILES['file']['tmp_name'], "r")) !== FALSE) {
             while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
@@ -69,6 +69,15 @@ if($_SESSION['role'] == 'admin')
             }
             fclose($handle);
         }
+        header("Location: " . "http://" . $_POST['serverPath']);
+    }
+
+    if($_POST && $_POST['move-student-order'])
+    {
+        $fn = $_POST['Fn'];
+        $student = new Student();
+        $student->moveStudentToLastInOrder($fn);
+
         header("Location: " . "http://" . $_POST['serverPath']);
     }
 }

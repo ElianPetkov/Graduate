@@ -59,6 +59,34 @@ class Student
 
     }
 
+    //administration use for moving one student with fn to last order position for diplomas
+    private function newOrderForDiplomas($fn)
+    {
+        $update = "UPDATE `student` SET `Participation_order` = `Participation_order`-1 
+                    WHERE `Participation_order`> (SELECT Participation_order From student Where FN = ?)";
+
+         $conn = $this->db->getConnection();
+         $statement = $conn->prepare($update);
+         $statement->execute([$fn]);
+
+    }
+
+    private function moveStudentLastInOrderForDiplomas($fn)
+    {
+        $update = "UPDATE student SET Participation_order = (SELECT COUNT(FN) from student where Participation = 1) WHERE student.FN = ?";
+
+        $conn = $this->db->getConnection();
+        $statement = $conn->prepare($update);
+        $statement->execute([$fn]);
+
+    }
+
+    public function moveStudentToLastInOrder($fn)
+    {
+        $this->newOrderForDiplomas($fn);
+        $this->moveStudentLastInOrderForDiplomas($fn);
+    }
+
 
     public function enrollStudent($studentFn) {
         $update = "UPDATE `student` SET `Participation` = '1' WHERE FN = ?";

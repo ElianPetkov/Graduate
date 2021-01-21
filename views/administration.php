@@ -109,6 +109,7 @@
                     <input type="file" name="file" id="file-uploaded" accept=".csv" />
                     <input type="submit" name="Качи файл" value="Запиши" />
                     <input hidden value="<?= $serverPath ?>" name="serverPath">
+                    <input hidden value="file" name="file">
                 </form>
             </section>
         </div>
