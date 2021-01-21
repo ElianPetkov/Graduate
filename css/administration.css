@@ -1,5 +1,8 @@
+html{
+  box-sizing: border-box;
+}
 #main-container {
-  width: 80%;
+  width: 65%;
   margin: 0;
   color: #dcbdbd;
 }
@@ -17,7 +20,7 @@
   display: inline-block;
   text-align: center;
   border: 4px solid #afa3a3;
-  margin: 2em 0 2em 2em;
+  margin: 8em 0 2em 2em;
 }
 
 label {
@@ -27,6 +30,7 @@ label {
 h1,
 h2 {
   color: #dcbdbd;
+  margin: 0 1em 0.3em 1em;
 }
 
 #enroll-student {
@@ -37,16 +41,6 @@ h2 {
   text-align: center;
   border: 4px solid #afa3a3;
   margin: 2em;
-}
-
-#move-student-order{
-  width: 40%;
-  border-radius: 0.3em;
-  padding: 1em;
-  display: inline-block;
-  border: 4px solid #afa3a3;
-  margin: 2em;
-  left: 0;
 }
 
 #enroll-ceremony {
@@ -92,15 +86,27 @@ input[type=submit]:focus {
 }
 
 #file-uploader-container {
-  width: 80%;
+  width: auto;
   border-radius: 0.3em;
   display: inline-block;
   text-align: center;
   border: 4px solid #afa3a3;
-  margin: 0 0 2em 0;
+  margin: -15em 0 2em 2em;
+  float: left;
+  
 
 }
 
 #file-uploaded{
   color: white;
+}
+
+#move-student-order{
+  width: 40%;
+  border-radius: 0.3em;
+  padding: 1em;
+  display: inline-block;
+  border: 4px solid #afa3a3;
+  margin: 2em;
+  left: 0;
 }

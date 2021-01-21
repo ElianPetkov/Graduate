@@ -100,10 +100,11 @@
                 </form>
                 <div class="clearfix"></div>
             </section>
-        </div>
-        <div id="file-uploader-container">
+
+            <div id="file-uploader-container">
             <section id="file-upload">
                 <h2>Качете CSV файл с данни за студенти</h2>
+                <hr>
                 <form enctype="multipart/form-data" action="../logic/administration.php" method="POST">
                     <input type="file" name="file" id="file-uploaded" accept=".csv" />
                     <input type="submit" name="Качи файл" value="Запиши" />
@@ -111,6 +112,8 @@
                 </form>
             </section>
         </div>
+        </div>
+
         <hr>
         <div id="move-student-order-container">
             <section id="move-student-order">
