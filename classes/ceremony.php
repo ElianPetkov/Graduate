@@ -58,6 +58,14 @@ class Ceremony
         $statement->execute([$curriculum,$class,$dateTime,$duration,$address,$capacity,$googleLink]);
     }
 
+    public function changeCeremonyDate($class,$curriculum,$dateTime)
+    {
+        $update = "UPDATE ceremony SET Start_time = ? WHERE ceremony.Curriculum = ? AND ceremony.Class = ?";
+        $conn = $this->db->getConnection();
+        $statement = $conn->prepare($update);
+        $statement->execute([$dateTime,$curriculum,$class]);
+    }
+
     public function __construct()
     {
         $this->db = new Db();
