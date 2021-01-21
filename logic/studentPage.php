@@ -88,8 +88,10 @@ if ($_SESSION['role'] == 'student') {
         $isStudentEnrolledToCeremony = $student->getIsParticipation();
 
         //оптимизации за ред на студента и ориентировачно време
+        if($isStudentEnrolledToCeremony){
         $studentOrder = $student->getStudentOrder();
         $timeToTakeDiplomaStudent = studentWillGetDiplomaAt($ceremonyDate, $studentOrder);
+        }
     }
 } else {
     header("Location:../errorPage/404ErrorPage.html");

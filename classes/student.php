@@ -21,21 +21,13 @@ class Student
 
     private function findStudentOrder()
     {
-        $select = "SELECT FN FROM student Where class=? AND Curriculum = ? AND Participation = 1 ORDER BY FN";
+        $select = "SELECT COUNT(FN) AS number from student where Participation = 1";
         try {
             $conn = $this->db->getConnection();
             $statement = $conn->prepare($select);
-            $statement->execute([$this->class,$this->curriculum]);
-            $order = 1;
-            while($data = $statement->fetch())
-            {
-                if($data['FN'] == $this->fn)
-                {
-                    return $order;
-                }
-                else
-                    $order++;
-            }
+            $statement->execute([]);
+            $data = $statement->fetch();
+            return $data['number'];
             
         } catch (PDOException $error) {
             echo $error->getMessage();
@@ -47,7 +39,7 @@ class Student
     {
         $studentOrder = $this->findStudentOrder();
 
-        $update = "UPDATE `student` SET `Participation_order` =".$studentOrder. "WHERE FN = ".$this->fn;
+        $update = "UPDATE student SET Participation_order =".$studentOrder. " WHERE student.FN =".$this->fn;
         $conn = $this->db->getConnection();
         $statement = $conn->prepare($update);
         $statement->execute([]);
