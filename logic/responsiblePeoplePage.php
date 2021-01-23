@@ -24,9 +24,8 @@ require_once '../config/includeClasses.php';
         $state = $_POST['state'];
         $fn = $_POST['fn'];
         $task = $_POST['task'];
-        $class = $_POST['class'];
-        $t = new Tasks();
-        $t->changeState($fn,$class, $state,$task);
+        $t = new Student();
+        $t->changeStateOFTask($fn,$state,$task);
         header("Location: " . "http://" . $_POST['serverPath']);
     }
 

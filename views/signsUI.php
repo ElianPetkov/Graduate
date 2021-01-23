@@ -42,13 +42,13 @@
                 <form action="../logic/responsiblePeoplePage.php" method="POST">
                     <select id="state" name="state">
                         <optgroup>
+                            <option value="" selected disabled>'. $row['State'] .'</option>
                             <option value="NotSigned">NotSigned</option>
                             <option value="Signed">Signed</option>
                         </optgroup>
                     </select> 
                     <input hidden value='.$row['FN'].' name="fn">
                     <input hidden value = "Sign" name = "task">
-                    <input hidden value = '.$row['Class'].' name = "class">
                     <input hidden value='.$serverPath.' name="serverPath">
                     <input type="submit" id = "button" value="Промени" />
                 </form>

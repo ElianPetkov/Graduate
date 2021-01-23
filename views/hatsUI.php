@@ -42,6 +42,7 @@
                 <form action="../logic/responsiblePeoplePage.php" method="POST">
                     <select id="state" name="state">
                         <optgroup>
+                            <option value="" selected disabled>'. $row['State'] .'</option>
                             <option value="NotTaken">NotTaken</option>
                             <option value="Taken">Taken</option>
                             <option value="Returned">Returned</option>
@@ -49,7 +50,6 @@
                     </select> 
                     <input hidden value='.$row['FN'].' name="fn">
                     <input hidden value = "Hat" name = "task">
-                    <input hidden value = '.$row['Class'].' name = "class">
                     <input hidden value='.$serverPath.' name="serverPath">
                     <input type="submit" id = "button" value="Промени" />
                 </form>

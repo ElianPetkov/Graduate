@@ -78,6 +78,20 @@ class Student
         $statement = $conn->prepare($insertSign);
         $statement->execute([$this->fn,$this->class,$this->curriculum]);
     }
+
+    public function changeStateOfTask($fn,$state,$task)
+    {
+        if(strcmp($task, "Diploma" ) == 0) {   $update = "UPDATE Diploma SET State = ? WHERE FN = ?";}
+        if(strcmp($task, "Sign" ) == 0) {   $update = "UPDATE Sign SET State = ? WHERE FN = ?";}
+        if(strcmp($task, "Hat" ) == 0) {   $update = "UPDATE Hat SET State = ? WHERE FN = ?";}
+        if(strcmp($task, "Gown" ) == 0) {   $update = "UPDATE Gown SET State = ? WHERE FN = ?";}
+            $conn = $this->db->getConnection();
+            $statement = $conn->prepare($update);
+            $statement->execute([$state, $fn]);
+         
+    }
+
+
     //administration use for moving one student with fn to last order position for diplomas
     private function newOrderForDiplomas($fn)
     {
