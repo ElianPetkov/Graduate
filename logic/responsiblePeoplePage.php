@@ -6,10 +6,10 @@ require_once '../config/includeClasses.php';
     // $password = $_GET['password'];
     $role = $_SESSION['role'];
 
-   if($role == 'diploma') $select = "Select FN,Class,Diploma from Tasks";
-   else if($role == 'sign') $select = "Select FN,Class,Sign from Tasks";
-   else if($role == 'hat') $select = "Select FN,Class,Hat from Tasks";
-   else if($role == 'gown') $select = "Select FN,Class,Gown from Tasks";
+   if($role == 'diploma') $select = "Select FN,Class,Curriculum,State from Diploma";
+   else if($role == 'sign') $select = "Select FN,Class,Curriculum,State from Sign";
+   else if($role == 'hat') $select = "Select FN,Class,Curriculum,State from Hat";
+   else if($role == 'gown') $select = "Select FN,Class,Curriculum,State from Gown";
    else header("Location:../errorPage/404ErrorPage.html");
     $db = new Db();
     $conn = $db->getConnection();
