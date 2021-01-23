@@ -27,6 +27,8 @@
         <th>Випуск</th>
         <th>Спец.</th>
         <th>Състояние</th>
+        <th>Последна промяна</th>
+        <th>Коментар</th>
         <th> Промени състоянието </th>
         </tr>
         </thread>
@@ -40,6 +42,7 @@
                 }
                 echo '<td>
                 <form action="../logic/responsiblePeoplePage.php" method="POST">
+                    <textarea id="comment" name="comment" type="text" placeholder="Коментар"></textarea>
                     <select id="state" name="state">
                         <optgroup>
                             <option value="" selected disabled>'. $row['State'] .'</option>

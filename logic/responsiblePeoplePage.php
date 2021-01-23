@@ -6,10 +6,10 @@ require_once '../config/includeClasses.php';
     // $password = $_GET['password'];
     $role = $_SESSION['role'];
 
-   if($role == 'diploma') $select = "Select FN,Class,Curriculum,State from Diploma";
-   else if($role == 'sign') $select = "Select FN,Class,Curriculum,State from Sign";
-   else if($role == 'hat') $select = "Select FN,Class,Curriculum,State from Hat";
-   else if($role == 'gown') $select = "Select FN,Class,Curriculum,State from Gown";
+   if($role == 'diploma') $select = "Select FN,Class,Curriculum,State,Last_change_date,Comment from Diploma";
+   else if($role == 'sign') $select = "Select FN,Class,Curriculum,State,Last_change_date,Comment from Sign";
+   else if($role == 'hat') $select = "Select FN,Class,Curriculum,State,Last_change_date,Comment from Hat";
+   else if($role == 'gown') $select = "Select FN,Class,Curriculum,State,Last_change_date,Comment from Gown";
    else header("Location:../errorPage/404ErrorPage.html");
     $db = new Db();
     $conn = $db->getConnection();
@@ -21,11 +21,14 @@ require_once '../config/includeClasses.php';
 
     if($_POST)
     {
-        $state = $_POST['state'];
-        $fn = $_POST['fn'];
-        $task = $_POST['task'];
-        $t = new Student();
-        $t->changeStateOFTask($fn,$state,$task);
+        if(isset($_POST['state']))
+        {   $state = $_POST['state'];
+            $fn = $_POST['fn'];
+            $task = $_POST['task'];
+            $comment = $_POST['comment'];
+            $t = new Student();
+            $t->changeStateOFTask($fn,$state,$task,$comment);
+        }
         header("Location: " . "http://" . $_POST['serverPath']);
     }
 

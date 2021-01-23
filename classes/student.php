@@ -79,15 +79,15 @@ class Student
         $statement->execute([$this->fn,$this->class,$this->curriculum]);
     }
 
-    public function changeStateOfTask($fn,$state,$task)
+    public function changeStateOfTask($fn,$state,$task,$comment)
     {
-        if(strcmp($task, "Diploma" ) == 0) {   $update = "UPDATE Diploma SET State = ?, Last_change_date = NOW() WHERE FN = ?";}
-        if(strcmp($task, "Sign" ) == 0) {   $update = "UPDATE Sign SET State = ?, Last_change_date = NOW() WHERE FN = ?";}
-        if(strcmp($task, "Hat" ) == 0) {   $update = "UPDATE Hat SET State = ?, Last_change_date = NOW() WHERE FN = ?";}
-        if(strcmp($task, "Gown" ) == 0) {   $update = "UPDATE Gown SET State = ?, Last_change_date = NOW() WHERE FN = ?";}
+        if(strcmp($task, "Diploma" ) == 0) {   $update = "UPDATE Diploma SET State = ?, Last_change_date = NOW(), Comment = ? WHERE FN = ?";}
+        if(strcmp($task, "Sign" ) == 0) {   $update = "UPDATE Sign SET State = ?, Last_change_date = NOW(), Comment = ? WHERE FN = ?";}
+        if(strcmp($task, "Hat" ) == 0) {   $update = "UPDATE Hat SET State = ?, Last_change_date = NOW(), Comment = ? WHERE FN = ?";}
+        if(strcmp($task, "Gown" ) == 0) {   $update = "UPDATE Gown SET State = ?, Last_change_date = NOW(), Comment = ? WHERE FN = ?";}
             $conn = $this->db->getConnection();
             $statement = $conn->prepare($update);
-            $statement->execute([$state, $fn]);
+            $statement->execute([$state,$comment, $fn]);
          
     }
 
