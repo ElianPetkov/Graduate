@@ -27,7 +27,7 @@
             <section id="enroll-ceremony">
                 <h1>Добавяне на церемония</h1>
                 <hr>
-                <form method="POST" action="../logic/administration.php">
+                <form method="POST" action="../logic/administrationEnrollStudentsAndCeremonies.php">
                     <label for="class">Випуск:</label>
                     <input name="class" type="text" />
 
@@ -59,7 +59,7 @@
             <section id="enroll-student">
                 <h1>Добавяне на студент</h1>
                 <hr>
-                <form method="POST" action="../logic/administration.php">
+                <form method="POST" action="../logic/administrationEnrollStudentsAndCeremonies.php">
 
                     <label for="fn">Факултетен номер:</label>
                     <input name="fn" type="text" />
@@ -110,7 +110,7 @@
             <section id="file-upload">
                 <h2>Качете CSV файл с данни за студенти</h2>
                 <hr>
-                <form enctype="multipart/form-data" action="../logic/administration.php" method="POST">
+                <form enctype="multipart/form-data" action="../logic/administrationEnrollStudentsAndCeremonies.php" method="POST">
                     <input type="file" name="file" id="file-uploaded" accept=".csv" />
                     <input type="submit" name="Качи файл" value="Запиши" />
                     <input hidden value="<?= $serverPath ?>" name="serverPath">
