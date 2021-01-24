@@ -27,6 +27,30 @@ class gown
     }
 
 
+    public function getStateOfTask($fn)
+    {
+        $select = "Select State From Gown Where fn=?";
+        try {
+            $conn = $this->db->getConnection();
+            $statement = $conn->prepare($select);
+            $statement->execute([$fn]);
+            return $statement->fetch();
+        } catch (PDOException $error) {
+            echo $error->getMessage();
+            return;
+        }
+    }
+
+    public function stateIntoMessage($fn)
+    {
+        $result = $this->getStateOfTask($fn);
+        $state = $result['State'];
+        $msg = '';
+        if($state == 'NotTaken') $msg = "Трябва да си вземете тогата от отговрника за тоги. </br>";
+        else if($state == 'Taken') $msg = "Трябва да върнете тогата при отговорника за тоги. </br>";
+        else if($state == 'Returned') $msg = "Вие сте върнал тогата.";
+        return $msg;
+    }
 
     public function changeStateToDefault($class,$curriculum)
     {

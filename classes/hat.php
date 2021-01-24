@@ -46,8 +46,8 @@ class hat
         $state = $result['State'];
         $msg = '';
         if($state == 'NotTaken') $msg = "Трябва да си вземете шапка от отговрника за шапки. </br>";
-        else if($state == 'Taken') $msg = "Трябва да върнете шапката при отговорника за шапки </br>";
-        else if($state == 'Returned') $msg = "Вие сте върнал шапката";
+        else if($state == 'Taken') $msg = "Трябва да върнете шапката при отговорника за шапки. </br>";
+        else if($state == 'Returned') $msg = "Вие сте върнал шапката.";
         return $msg;
     }
 

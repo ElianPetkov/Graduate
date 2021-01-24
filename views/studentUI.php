@@ -61,21 +61,20 @@
                      echo "
                     <section id='invitation-container'>
                         <div class='enrollMessage'>
-                            <hr>
                             <p>
                             Записан сте за предстоящата церемония на $ceremonyDate
                             </p>        
                         </div>
                         <div>
-                            <hr>
+                        <hr>
                             <h2>Оставащи задачи:</h2>
-                            <hr>";
-                    
-                   
-                    echo "<p><b>Шапка: </b>" . $msgHat;
-
-                    echo"</p>";
-                    echo " </div>
+                        <hr>";
+    
+                        echo "<p><b>Диплома: </b>" . $msgDiploma."</p>";
+                        echo "<p><b>Подпис: </b>" . $msgSign."</p>";
+                        echo "<p><b>Шапка: </b>" . $msgHat."</p>";
+                        echo "<p><b>Тога: </b>" . $msgGown."</p>";
+                        echo " </div>
                     </section>";
                     }
                     ?>
