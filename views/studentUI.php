@@ -44,17 +44,7 @@
                         <input hidden value="<?= $serverPath ?>" name="serverPath">
                     </form>
                 </div>
-                <div class="enrollMessage">
-                    <?php
-                    if (isset($isStudentEnrolledToCeremony) && $isStudentEnrolledToCeremony) {
-                        echo "
-                        <hr>
-                     <p>
-                        Записан сте за предстоящата церемония на $ceremonyDate
-                    </p>";
-                    }
-                    ?>
-                </div>
+
             <?php
             } else {
                 echo "
@@ -65,6 +55,32 @@
             ?>
 
         </section>
+
+                <?php
+                 if (isset($isStudentEnrolledToCeremony) && $isStudentEnrolledToCeremony) {
+                     echo "
+                    <section id='invitation-container'>
+                        <div class='enrollMessage'>
+                            <hr>
+                            <p>
+                            Записан сте за предстоящата церемония на $ceremonyDate
+                            </p>        
+                        </div>
+                        <div>
+                            <hr>
+                            <h2>Оставащи задачи:</h2>
+                            <hr>";
+                    
+                   
+                    echo "<p><b>Шапка: </b>" . $msgHat;
+
+                    echo"</p>";
+                    echo " </div>
+                    </section>";
+                    }
+                    ?>
+
+      
         <section id="additional-information-container" style="display: <?php echo ($isStudentEnrolledToCeremony ? "" : "none") ?>">
             <?php
             if (isset($isStudentEnrolledToCeremony) && $isStudentEnrolledToCeremony) {

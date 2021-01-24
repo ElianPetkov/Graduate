@@ -91,8 +91,8 @@ if ($_SESSION['role'] == 'student') {
         //оптимизации за ред на студента и ориентировачно време
         if($isStudentEnrolledToCeremony){
         $hat = new Hat();
-        $result = $hat->getStateOfTask($fn);
-        $state = $result['State'];
+        $msgHat = $hat->stateIntoMessage($fn);
+
         $studentOrder = $student->getStudentOrder();
         $timeToTakeDiplomaStudent = studentWillGetDiplomaAt($ceremonyDate, $studentOrder);
 
