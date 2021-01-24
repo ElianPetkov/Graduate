@@ -4,6 +4,7 @@ require_once '../config/includeClasses.php';
 session_start();
 if ($_SESSION['role'] == 'student') {
 
+    $fn = $_SESSION['fn'];
     function isCeremonyOver($ceremonyDate)
     {
 
@@ -52,7 +53,7 @@ if ($_SESSION['role'] == 'student') {
 
         header("Location: " . "http://" . $_POST['serverPath']);
     } else {
-        $fn = $_SESSION['fn'];
+    
         $password = $_SESSION['password'];
 
         $student = new Student();
@@ -89,8 +90,12 @@ if ($_SESSION['role'] == 'student') {
 
         //оптимизации за ред на студента и ориентировачно време
         if($isStudentEnrolledToCeremony){
+        $hat = new Hat();
+        $msgHat = $hat->stateIntoMessage($fn);
+
         $studentOrder = $student->getStudentOrder();
         $timeToTakeDiplomaStudent = studentWillGetDiplomaAt($ceremonyDate, $studentOrder);
+
         }
     }
 } else {
