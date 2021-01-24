@@ -14,7 +14,7 @@ class hat
 
     public function getTasks($fn,$curriculum,$class)
     {
-        $select = "Select * hat Tasks Where fn=? AND class=? AND curriculum=?";
+        $select = "Select * From gown Where fn=? AND class=? AND curriculum=?";
         try {
             $conn = $this->db->getConnection();
             $statement = $conn->prepare($select);
@@ -30,7 +30,7 @@ class hat
 
     public function changeStateToDefault($class,$curriculum)
     {
-            $update = "UPDATE hat SET State = 'NotTaken' WHERE class = ? AND curriculum = ?";
+            $update = "UPDATE gown SET State = 'NotTaken' WHERE class = ? AND curriculum = ?";
             $conn = $this->db->getConnection();
             $statement = $conn->prepare($update);
             $statement->execute([$class,$curriculum]);
