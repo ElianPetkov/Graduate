@@ -26,6 +26,20 @@ class sign
         }
     }
 
+    public function getTasksForCeremony($curriculum,$class)
+    {
+        $select = "Select * FROM sign Where class=? AND curriculum=?";
+        try {
+            $conn = $this->db->getConnection();
+            $statement = $conn->prepare($select);
+            $statement->execute([$class,$curriculum]);
+            return $statement;
+        } catch (PDOException $error) {
+            echo $error->getMessage();
+            return;
+        }
+    }
+
     public function getStateOfTask($fn)
     {
         $select = "Select State From Sign Where fn=?";

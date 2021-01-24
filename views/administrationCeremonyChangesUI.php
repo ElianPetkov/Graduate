@@ -58,7 +58,7 @@
                     <input hidden value="<?= $serverPath ?>" name="serverPath">
             </section>
         </div>
-        <div id="reset-container">
+        <div id="export-reorder-students">
             <section id="move-student-order">
                 <h3>Попълнете факултетния номер на студента изпуснал реда си за да го преместите на последно място по ред</h3>
                 <hr>
@@ -68,6 +68,30 @@
 
                     <input type="submit" value="Премести" />
                     <input hidden value="move-student-order" name="move-student-order">
+                    <input hidden value="<?= $serverPath ?>" name="serverPath">
+                </form>
+            </section>
+
+            <section id="export-data">
+                <h3>Свалете csv файл за състояние на избрана задача на конкретна церемония:</h3>
+                <hr>
+                <form method="POST" action="../logic/administrationCeremonyChanges.php">
+                    <label for="class">Випуск:</label>
+                    <input name="class" type="text" />
+
+                    <label for="curriculum">Специалност:</label>
+                    <input name="curriculum" type="text" />
+
+                    <label for="task">Списък за:</label>
+                    <select name="task">
+                        <option value="hat">Списък за шапки</option>
+                        <option value="gown">Списък за тоги</option>
+                        <option value="sign">Списък за подписи</option>
+                        <option value="diploma">Списък за дипломи</option>
+                    </select>
+
+                    <input type="submit" value="Свали" />
+                    <input hidden value="export" name="export">
                     <input hidden value="<?= $serverPath ?>" name="serverPath">
                 </form>
             </section>

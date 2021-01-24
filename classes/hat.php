@@ -14,12 +14,26 @@ class hat
 
     public function getTasks($fn,$curriculum,$class)
     {
-        $select = "Select * hat Tasks Where fn=? AND class=? AND curriculum=?";
+        $select = "Select * hat Where fn=? AND class=? AND curriculum=?";
         try {
             $conn = $this->db->getConnection();
             $statement = $conn->prepare($select);
             $statement->execute([$fn,$class,$curriculum]);
             return $statement->fetch();
+        } catch (PDOException $error) {
+            echo $error->getMessage();
+            return;
+        }
+    }
+
+    public function getTasksForCeremony($curriculum,$class)
+    {
+        $select = "Select * From hat Where class=? AND curriculum=?";
+        try {
+            $conn = $this->db->getConnection();
+            $statement = $conn->prepare($select);
+            $statement->execute([$class,$curriculum]);
+            return $statement;
         } catch (PDOException $error) {
             echo $error->getMessage();
             return;
