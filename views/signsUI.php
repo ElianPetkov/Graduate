@@ -17,18 +17,15 @@
             <h1>
                 Добре дошли: <?= $_SESSION['name'] ?>
             </h1>
-            <p id = "responsibility">Вие сте отговорник за подписването за взета диплома на абсолвент. Вашата задача е да отразите, когато даден абсолвент се подпише, че си е взел дипломата. </p>
+            <p id = "responsibility">Вие сте отговорник за <b>подписването за взета диплома</b> на абсолвент. Вашата задача е да отразите, когато даден абсолвент се подпише, че си е взел дипломата. </p>
         
         </section>
         <table id ="table">
         <thread>
         <tr>
         <th>ФН</th>
-        <th>Випуск</th>
-        <th>Спец.</th>
         <th>Състояние</th>
         <th>Последна промяна</th>
-        <th>Коментар</th>
         <th> Промени състоянието </th>
         </tr>
         </thread>
@@ -37,9 +34,13 @@
         $serverPath = $_SERVER['SERVER_NAME'] . "$_SERVER[REQUEST_URI]";
             foreach($students as $row){
                 echo "<tr>";
-                foreach($row as $key =>$val){
-                    echo "<td> ".$val." </td>";
-                }
+                echo"<td>". $row['FN']."</td>";
+                echo"<td>". $row['State']."</td>";
+                echo"<td>";
+                if(isset($row['Last_change_date']))
+                    echo $row['Last_change_date']."</br>".$row['Comment']."</br>Променил: ".$_SESSION['name'];
+                else echo "Все още няма отразени промени";
+                echo"</td>";
                 echo '<td>
                 <form action="../logic/responsiblePeoplePage.php" method="POST">
                     <textarea id="comment" name="comment" type="text" placeholder="Коментар"></textarea>
