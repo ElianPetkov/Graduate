@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div id="main-container">
+    <div id="main-container-tasks">
         <section id="greetings-container">
             <h1>
                 Добре дошли: <?= $_SESSION['name'] ?>

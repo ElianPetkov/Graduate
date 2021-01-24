@@ -51,3 +51,11 @@ table{
     margin: 1px 5px;
     cursor: pointer;
   }
+
+  #main-container-tasks {
+    margin: 1.5rem 0;
+    display: inline-block;
+    width: 80%;
+    background-color: rgb(57 50 50 / 86%);
+    margin: 0;
+  }
