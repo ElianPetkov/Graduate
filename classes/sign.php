@@ -1,7 +1,7 @@
 <?php
 require_once '../config/includeClasses.php';
 
-class hat
+class sign
 {
     private $fn;
     private $class;

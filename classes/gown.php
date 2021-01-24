@@ -1,7 +1,7 @@
 <?php
 require_once '../config/includeClasses.php';
 
-class hat
+class gown
 {
     private $fn;
     private $class;
