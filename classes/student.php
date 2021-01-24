@@ -59,25 +59,6 @@ class Student
 
     }
 
-    private function enrollAllTasks()
-    {
-        $insertDiploma = "INSERT INTO Diploma (FN, Class, Curriculum) VALUES (?,?,?)";
-        $insertHat = "INSERT INTO Hat (FN, Class, Curriculum) VALUES (?,?,?)";
-        $insertGown = "INSERT INTO Gown (FN, Class, Curriculum) VALUES (?,?,?)";
-        $insertSign = "INSERT INTO Sign (FN, Class, Curriculum) VALUES (?,?,?)";
-        $conn = $this->db->getConnection();
-        $statement = $conn->prepare($insertDiploma);
-        $statement->execute([$this->fn,$this->class,$this->curriculum]);
-
-        $statement = $conn->prepare($insertHat);
-        $statement->execute([$this->fn,$this->class,$this->curriculum]);
-
-        $statement = $conn->prepare($insertGown);
-        $statement->execute([$this->fn,$this->class,$this->curriculum]);
-
-        $statement = $conn->prepare($insertSign);
-        $statement->execute([$this->fn,$this->class,$this->curriculum]);
-    }
 
     public function changeStateOfTask($fn,$state,$task,$comment)
     {
@@ -120,7 +101,28 @@ class Student
         $this->moveStudentLastInOrderForDiplomas($fn);
     }
 
+    
+    private function enrollAllTasks()
+    {
+        $insertDiploma = "INSERT INTO Diploma (FN, Class, Curriculum) VALUES (?,?,?)";
+        $insertHat = "INSERT INTO Hat (FN, Class, Curriculum) VALUES (?,?,?)";
+        $insertGown = "INSERT INTO Gown (FN, Class, Curriculum) VALUES (?,?,?)";
+        $insertSign = "INSERT INTO Sign (FN, Class, Curriculum) VALUES (?,?,?)";
+        $conn = $this->db->getConnection();
+        $statement = $conn->prepare($insertDiploma);
+        $statement->execute([$this->fn,$this->class,$this->curriculum]);
 
+        $statement = $conn->prepare($insertHat);
+        $statement->execute([$this->fn,$this->class,$this->curriculum]);
+
+        $statement = $conn->prepare($insertGown);
+        $statement->execute([$this->fn,$this->class,$this->curriculum]);
+
+        $statement = $conn->prepare($insertSign);
+        $statement->execute([$this->fn,$this->class,$this->curriculum]);
+    }
+
+    
     public function enrollStudent($studentFn) {
         $update = "UPDATE `student` SET `Participation` = '1' WHERE FN = ?";
         $conn = $this->db->getConnection();
