@@ -8,7 +8,7 @@ session_start();
 $isValid = true;
 if (!empty($_POST['user']) && !empty($_POST['password'])) {  
     $user = $_POST['user'];
-    $password = $_POST['password'];
+    $password = hash("sha256",$_POST['password']);
 
     $student = new Student();
     $studentData = $student->getStudent($user, $password);
@@ -29,7 +29,7 @@ if (!empty($_POST['user']) && !empty($_POST['password'])) {
         $_SESSION['Curriculum'] = 'КН';    
         header("Location:../views/diplomаsUI.php");
               //echo 'You have entered valid username and password';
-    }else if($user == 'Sign' && $password == '123456'){
+    }else if($user == 'Sign' && $_POST['password'] == '123456'){
         $_SESSION['valid'] = true;
         $_SESSION['timeout'] = time();
         $_SESSION['user'] = 'Sign';
@@ -38,7 +38,7 @@ if (!empty($_POST['user']) && !empty($_POST['password'])) {
         $_SESSION['Class'] = '2021';
         $_SESSION['Curriculum'] = 'КН';
         header("Location:../views/signsUI.php");
-    }else if($user == 'Hat' && $password == '123456'){
+    }else if($user == 'Hat' && $_POST['password'] == '123456'){
         $_SESSION['valid'] = true;
         $_SESSION['timeout'] = time();
         $_SESSION['user'] = 'Hat';
@@ -47,7 +47,7 @@ if (!empty($_POST['user']) && !empty($_POST['password'])) {
         $_SESSION['Class'] = '2021';
         $_SESSION['Curriculum'] = 'КН';
         header("Location:../views/hatsUI.php");
-    }else if($user == 'Gown' && $password == '123456'){
+    }else if($user == 'Gown' && $_POST['password'] == '123456'){
         $_SESSION['valid'] = true;
         $_SESSION['timeout'] = time();
         $_SESSION['user'] = 'Gown';
@@ -56,7 +56,7 @@ if (!empty($_POST['user']) && !empty($_POST['password'])) {
         $_SESSION['Class'] = '2021';
         $_SESSION['Curriculum'] = 'КН';
         header("Location:../views/gownsUI.php");
-    }else if($user == 'admin' && $password == 'admin'){
+    }else if($user == 'admin' && $_POST['password'] == 'admin'){
         $_SESSION['valid'] = true;
         $_SESSION['timeout'] = time();
         $_SESSION['user'] = 'admin';

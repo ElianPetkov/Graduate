@@ -22,11 +22,14 @@ if($_SESSION['role'] == 'admin')
     if ($_POST && isset($_POST['student'])) {
         $class = $_POST['class'];
         $degree = $_POST['degree'];
+
         $password = $_POST['password'];
+        $hashPassword = hash("sha256",$password);
+
         $grade = $_POST['grade'];
         $fn = $_POST['fn'];
-        if(isset($diplomaNumber))
-            $diplomaNumber = $_POST['dipolmaNumber'];
+        if(isset($_POST['diplomaNumber']))
+            $diplomaNumber = $_POST['diplomaNumber'];
         else
             $diplomaNumber = null;
         $firstName = $_POST['firstName'];
@@ -36,7 +39,7 @@ if($_SESSION['role'] == 'admin')
         $curriculum = $_POST['curriculum'];
 
         $student = new Student();
-        $student->createStudent($class,$curriculum, $grade, $firstName,$lastName,$faculty,$group,$degree,$password,$fn,$diplomaNumber);
+        $student->createStudent($class,$curriculum, $grade, $firstName,$lastName,$faculty,$group,$degree,$hashPassword,$fn,$diplomaNumber);
         header("Location: " . "http://" . $_POST['serverPath']);
     }
 
@@ -50,8 +53,9 @@ if($_SESSION['role'] == 'admin')
                         $fieldsArrayCounter++;
                 }
                 $student = new Student();
+                $hashPassword = hash("sha256",$containerForCVSData[3]);
                 $student->createStudent($containerForCVSData[4],$containerForCVSData[9],$containerForCVSData[5],$containerForCVSData[1],$containerForCVSData[2],
-                                        $containerForCVSData[7],$containerForCVSData[8],$containerForCVSData[6],$containerForCVSData[3],$containerForCVSData[0],
+                                        $containerForCVSData[7],$containerForCVSData[8],$containerForCVSData[6],$hashPassword,$containerForCVSData[0],
                                         $containerForCVSData[10]);//optimize
     }
 
