@@ -6,15 +6,15 @@ require_once '../config/includeClasses.php';
     // $password = $_GET['password'];
     $role = $_SESSION['role'];
 
-   if($role == 'diploma') $select = "Select FN,Class,Curriculum,State,Last_change_date,Comment from Diploma";
-   else if($role == 'sign') $select = "Select FN,Class,Curriculum,State,Last_change_date,Comment from Sign";
-   else if($role == 'hat') $select = "Select FN,Class,Curriculum,State,Last_change_date,Comment from Hat";
-   else if($role == 'gown') $select = "Select FN,Class,Curriculum,State,Last_change_date,Comment from Gown";
+   if($role == 'diploma') $select = "Select FN,State,Last_change_date,Comment from Diploma where Class = ? AND Curriculum = ?";
+   else if($role == 'sign') $select = "Select FN,State,Last_change_date,Comment from Sign where Class = ? AND Curriculum = ?";
+   else if($role == 'hat') $select = "Select FN,State,Last_change_date,Comment from Hat where Class = ? AND Curriculum = ?";
+   else if($role == 'gown') $select = "Select FN,State,Last_change_date,Comment from Gown where Class = ? AND Curriculum = ?";
    else header("Location:../errorPage/404ErrorPage.html");
     $db = new Db();
     $conn = $db->getConnection();
     $statement = $conn->prepare($select);
-    $statement->execute();
+    $statement->execute([$_SESSION['Class'], $_SESSION['Curriculum']]);
     $students = $statement->fetchAll();
     //print_r($students);
 
