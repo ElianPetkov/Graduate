@@ -1,4 +1,4 @@
-<?php require '../logic/administration.php' ?>
+<?php require '../logic/administrationEnrollStudentsAndCeremonies.php' ?>
 <!DOCTYPE html>
 <html>
 
