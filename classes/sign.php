@@ -1,7 +1,7 @@
 <?php
 require_once '../config/includeClasses.php';
 
-class hat
+class sign
 {
     private $fn;
     private $class;
@@ -14,7 +14,7 @@ class hat
 
     public function getTasks($fn,$curriculum,$class)
     {
-        $select = "Select * hat Tasks Where fn=? AND class=? AND curriculum=?";
+        $select = "Select * From sign Where fn=? AND class=? AND curriculum=?";
         try {
             $conn = $this->db->getConnection();
             $statement = $conn->prepare($select);
@@ -26,35 +26,11 @@ class hat
         }
     }
 
-    public function getStateOfTask($fn)
-    {
-        $select = "Select State From Hat Where fn=?";
-        try {
-            $conn = $this->db->getConnection();
-            $statement = $conn->prepare($select);
-            $statement->execute([$fn]);
-            return $statement->fetch();
-        } catch (PDOException $error) {
-            echo $error->getMessage();
-            return;
-        }
-    }
-
-    public function stateIntoMessage($fn)
-    {
-        $result = $this->getStateOfTask($fn);
-        $state = $result['State'];
-        $msg = '';
-        if($state == 'NotTaken') $msg = "Трябва да си вземете шапка от отговрника за шапки. </br>";
-        else if($state == 'Taken') $msg = "Трябва да върнете шапката при отговорника за шапки </br>";
-        else if($state == 'Returned') $msg = "Вие сте върнал шапката";
-        return $msg;
-    }
 
 
     public function changeStateToDefault($class,$curriculum)
     {
-            $update = "UPDATE hat SET State = 'NotTaken' WHERE class = ? AND curriculum = ?";
+            $update = "UPDATE sign SET State = 'NotSigned' WHERE class = ? AND curriculum = ?";
             $conn = $this->db->getConnection();
             $statement = $conn->prepare($update);
             $statement->execute([$class,$curriculum]);

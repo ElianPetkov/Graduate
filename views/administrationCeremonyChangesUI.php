@@ -1,4 +1,4 @@
-<?php require '../logic/administrationEnrollStudentsAndCeremonies.php' ?>
+<?php require '../logic/administrationCeremonyChanges.php' ?>
 <!DOCTYPE html>
 <html>
 
@@ -21,26 +21,29 @@
             </ul>
         </nav>
     </header>
+
     <?php $serverPath = $_SERVER['SERVER_NAME'] . "$_SERVER[REQUEST_URI]"; ?>
     <div id="main-container">
         <div id="change-data-container">
-            <section id="move-student-order">
-                <h3>Попълнете факултетния номер на студента изпуснал реда си за да го преместите на последно място по ред</h3>
-                <hr>
-                <form method="POST" action="../logic/administration.php">
-                    <label for="Fn">Факултетен номер:</label>
-                    <input name="Fn" type="text" />
+            <section id="reset-tasks">
+                <h3>Анулирайте състоянията за церемония <h3>
+                        <hr>
+                        <form method="POST" action="../logic/administrationCeremonyChanges.php">
+                            <label for="class">Випуск:</label>
+                            <input name="class" type="text" />
 
-                    <input type="submit" value="Премести" />
-                    <input hidden value="move-student-order" name="move-student-order">
-                    <input hidden value="<?= $serverPath ?>" name="serverPath">
-                </form>
+                            <label for="curriculum">Специалност:</label>
+                            <input name="curriculum" type="text" />
+
+                            <input type="submit" value="Промени" />
+                            <input hidden value="reset" name="reset">
+                            <input hidden value="<?= $serverPath ?>" name="serverPath">
+                        </form>
             </section>
-
             <section id="change-date">
                 <h3>Променете датата на церемония</h3>
                 <hr>
-                <form method="POST" action="../logic/administration.php">
+                <form method="POST" action="../logic/administrationCeremonyChanges.php">
                     <label for="class">Випуск:</label>
                     <input name="class" type="text" />
 
@@ -55,8 +58,20 @@
                     <input hidden value="<?= $serverPath ?>" name="serverPath">
             </section>
         </div>
-    </div>
-    </div>
+        <div id="reset-container">
+            <section id="move-student-order">
+                <h3>Попълнете факултетния номер на студента изпуснал реда си за да го преместите на последно място по ред</h3>
+                <hr>
+                <form method="POST" action="../logic/administrationCeremonyChanges.php">
+                    <label for="Fn">Факултетен номер:</label>
+                    <input name="Fn" type="text" />
+
+                    <input type="submit" value="Премести" />
+                    <input hidden value="move-student-order" name="move-student-order">
+                    <input hidden value="<?= $serverPath ?>" name="serverPath">
+                </form>
+            </section>
+        </div>
 </body>
 
 </html>
