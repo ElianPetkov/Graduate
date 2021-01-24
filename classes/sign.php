@@ -26,6 +26,29 @@ class sign
         }
     }
 
+    public function getStateOfTask($fn)
+    {
+        $select = "Select State From Sign Where fn=?";
+        try {
+            $conn = $this->db->getConnection();
+            $statement = $conn->prepare($select);
+            $statement->execute([$fn]);
+            return $statement->fetch();
+        } catch (PDOException $error) {
+            echo $error->getMessage();
+            return;
+        }
+    }
+
+    public function stateIntoMessage($fn)
+    {
+        $result = $this->getStateOfTask($fn);
+        $state = $result['State'];
+        $msg = '';
+        if($state == 'NotSigned') $msg = "Трябва да сe подпишете, след като си вземете дипломата. </br>";
+        else if($state == 'Signed') $msg = "Вие сте се подписали, че сте си взели дипломата. </br>";
+        return $msg;
+    }
 
 
     public function changeStateToDefault($class,$curriculum)

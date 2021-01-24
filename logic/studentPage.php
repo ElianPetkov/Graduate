@@ -93,6 +93,15 @@ if ($_SESSION['role'] == 'student') {
         $hat = new Hat();
         $msgHat = $hat->stateIntoMessage($fn);
 
+        $diploma = new Diploma();
+        $msgDiploma = $diploma->stateIntoMessage($fn);
+
+        $sign = new Sign();
+        $msgSign = $sign->stateIntoMessage($fn);
+
+        $gown = new Gown();
+        $msgGown = $gown->stateIntoMessage($fn);
+
         $studentOrder = $student->getStudentOrder();
         $timeToTakeDiplomaStudent = studentWillGetDiplomaAt($ceremonyDate, $studentOrder);
 

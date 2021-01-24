@@ -27,6 +27,29 @@ class diploma
     }
 
 
+    public function getStateOfTask($fn)
+    {
+        $select = "Select State From Diploma Where fn=?";
+        try {
+            $conn = $this->db->getConnection();
+            $statement = $conn->prepare($select);
+            $statement->execute([$fn]);
+            return $statement->fetch();
+        } catch (PDOException $error) {
+            echo $error->getMessage();
+            return;
+        }
+    }
+
+    public function stateIntoMessage($fn)
+    {
+        $result = $this->getStateOfTask($fn);
+        $state = $result['State'];
+        $msg = '';
+        if($state == 'NotTaken') $msg = "Трябва да си вземете дипломата. </br>";
+        else if($state == 'Taken') $msg = "Вие сте взел Вашата диплома. </br>";
+        return $msg;
+    }
 
     public function changeStateToDefault($class,$curriculum)
     {
