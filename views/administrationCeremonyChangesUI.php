@@ -24,9 +24,9 @@
 
     <?php $serverPath = $_SERVER['SERVER_NAME'] . "$_SERVER[REQUEST_URI]"; ?>
     <div id="main-container">
-        <div id="change-data-container">
+        <div id="change-ceremony-properties-container">
             <section id="reset-tasks">
-                <h3>Анулирайте състоянията за церемония <h3>
+                <h3>Върнете default стойностите на състоянията за дадена церемония <h3>
                         <hr>
                         <form method="POST" action="../logic/administrationCeremonyChanges.php">
                             <label for="class">Випуск:</label>

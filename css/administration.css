@@ -100,13 +100,10 @@ input[type=submit]:focus {
   color: white;
 }
 
-#change-data-container{
-  vertical-align: middle;
-  text-align: center;
+#change-ceremony-properties-container{
   display: inline-block;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: start;
 
 }
 
@@ -127,7 +124,7 @@ input[type=submit]:focus {
   width: 40%;
   border-radius: 0.3em;
   padding: 1em;
-  display: inline-block;
+  display: block;
   border: 4px solid #afa3a3;
   margin: 2em;
   left: 0;
