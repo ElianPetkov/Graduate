@@ -3,8 +3,8 @@ html{
 }
 #main-container {
   width: 65%;
-  margin: 0;
   color: #dcbdbd;
+  margin: 2.4em 0 0 0;
 }
 
 #student-ceremony-enroll-container {

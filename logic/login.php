@@ -64,7 +64,7 @@ if (!empty($_POST['user']) && !empty($_POST['password'])) {
         $_SESSION['role'] = "admin";
         $_SESSION['Class'] = '2021';
         $_SESSION['Curriculum'] = 'КН';
-        header("Location:../views/administration.php");
+        header("Location:../views/administrationEnrollStudentsAndCeremoniesUI.php");
     }
     else {
               $isValid = false;

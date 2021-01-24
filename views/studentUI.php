@@ -30,8 +30,11 @@
                 <h2>Информация за предстоящата церемония</h2>
                 <hr>
             <p>
-                В $ceremonyDate на адрес <a href=$googleLink target=`_blank` style=color:white>$address</a>  ще се състои церемония по връчване на дипломи. Моля отбележете дали ще присъствате на церемонията като подвърдите чрез натискане на бутона.
+                В $ceremonyDate на адрес <a href=$googleLink target=`_blank` style=color:white>$address</a>  ще се състои церемония по връчване на дипломи. ";
+                if (!$isStudentEnrolledToCeremony) {
+                    echo  "Моля отбележете дали ще присъствате на церемонията като подвърдите чрез натискане на бутона.
             </p>";
+                }
             ?>
                 <div id="button-container">
                     <form action="../logic/studentPage.php" method="POST">
@@ -43,7 +46,7 @@
                 </div>
                 <div class="enrollMessage">
                     <?php
-                    if (isset($isStudentEnrolledToCeremony) && $isStudentEnrolledToCeremony){
+                    if (isset($isStudentEnrolledToCeremony) && $isStudentEnrolledToCeremony) {
                         echo "
                         <hr>
                      <p>
@@ -62,19 +65,19 @@
             ?>
 
         </section>
-        <section id="additional-information-container">
-            <h2>Важна информация за присъстващите на церемонията!</h2>
+        <section id="additional-information-container" style="display: <?php echo ($isStudentEnrolledToCeremony ? "" : "none") ?>">
             <?php
-                    if (isset($isStudentEnrolledToCeremony) && $isStudentEnrolledToCeremony){
-                        echo "
+            if (isset($isStudentEnrolledToCeremony) && $isStudentEnrolledToCeremony) {
+                echo "
+                <h2>Важна информация за присъстващите на церемонията!</h2>
                         <hr>        
-                        <p>Вие сте $studentOrder по ред за получване на диплома. Моля бъдете готови не по-късно от $timeToTakeDiplomaStudent часа да ви се връчи дипломата.</p>";
-                    }
-                    ?>
+                        <p>Вие сте $studentOrder по ред за получване на диплома. Моля бъдете готови не по-късно от $timeToTakeDiplomaStudent часа да ви се връчи дипломата.</p>
             <hr>
             <p>При присъствие на церемонията е важно да вземете тога и шапка. Можете да ги получите от отговорниците за тоги и шапки. След приключване на церемонията е важно да ги върнете при същите отговорници.</p>
             <hr>
-            <p>Важно е да се подпишете, че сте си взели дипломата при съответветния отговорник за това.</p>
+            <p>Важно е да се подпишете, че сте си взели дипломата при съответветния отговорник за това.</p>";
+            }
+            ?>
         </section>
     </div>
 </body>
