@@ -1,0 +1,5 @@
+[db]
+    host=localhost
+    name=Graduate2
+    user=root
+    password=

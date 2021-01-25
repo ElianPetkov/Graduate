@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+
+}
+
+body {
+  font-family: cursive;
+  background-image: url("../pictures/students-background.jpg");
+  background-size: contain;
+  background-size: cover;
+  text-align: center;
+  margin: 0;
+}
+
+#main-container {
+  margin: 1.5rem 0;
+  display: inline-block;
+  width: 50%;
+  background-color: rgb(57 50 50 / 86%);
+  margin: 0;
+}
+
+.main-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #afa3a3;
+  padding: 0.5rem 1rem;
+  z-index: 1;
+}
+
+.main-nav-items{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+.main-nav-item{
+  display: inline-block;
+  margin: 0 1rem;
+}
+
+.main-nav-item a{
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 0.2rem 0;
+}
+
+.main-nav-item a:hover,
+.main-nav-item a:active {
+    color: rgb(92, 60, 60);
+    font-size: 1.1em;
+}
