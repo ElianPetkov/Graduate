@@ -2,9 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!--<link rel="stylesheet" href="../css/student.css">
-    <link rel="stylesheet" href="../css/diplomаs.css">
-    <link rel="stylesheet" href="../css/main.css"> -->
     <link rel="stylesheet" href="../css/login.css">
     <link href="../pictures/favicon.ico" rel="shortcut icon" type="image/icon" />
 </head>

@@ -5,7 +5,6 @@ if($_SESSION['role'] == 'admin')
 {
     if ($_POST && isset($_POST['ceremony'])) {
         $class = $_POST['class'];
-        // $degree = $_POST['degree'];
         $address = $_POST['address'];
         $googleLink = $_POST['google-maps-link'];
         $capacity = $_POST['capacity'];
@@ -56,7 +55,7 @@ if($_SESSION['role'] == 'admin')
                 $hashPassword = hash("sha256",$containerForCVSData[3]);
                 $student->createStudent($containerForCVSData[4],$containerForCVSData[9],$containerForCVSData[5],$containerForCVSData[1],$containerForCVSData[2],
                                         $containerForCVSData[7],$containerForCVSData[8],$containerForCVSData[6],$hashPassword,$containerForCVSData[0],
-                                        $containerForCVSData[10]);//optimize
+                                        $containerForCVSData[10]);
     }
 
     if ($_POST && isset($_POST['file'])) {

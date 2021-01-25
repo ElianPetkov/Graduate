@@ -1,0 +1,19 @@
+INSERT INTO `ceremony` (`Curriculum`, `Class`, `Start_time`, `Duration`, `Address`, `Capacity`, `Map_link`) VALUES ('КН', '2021', '2021-07-15 11:22:08', '60', 'бул. \"Цар Освободител 15\"', '100', 'https://www.google.com/maps/place/%D0%A1%D0%BE%D1%84%D0%B8%D0%B9%D1%81%D0%BA%D0%B8+%D1%83%D0%BD%D0%B8%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82/@42.6930501,23.3338657,17.11z/data=!4m5!3m4!1s0x40aa85742b65a213:0x88e9e4cfcaa2e5b6!8m2!3d42.6935078!4d23.3347926'); 
+
+INSERT INTO `ceremony` (`Curriculum`, `Class`, `Start_time`, `Duration`, `Address`, `Capacity`, `Map_link`) VALUES ('КН', '2022', '2022-07-13 11:22:08', '60', 'бул. \"Цар Освободител 15\"', '100', 'https://www.google.com/maps/place/%D0%A1%D0%BE%D1%84%D0%B8%D0%B9%D1%81%D0%BA%D0%B8+%D1%83%D0%BD%D0%B8%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82/@42.6930501,23.3338657,17.11z/data=!4m5!3m4!1s0x40aa85742b65a213:0x88e9e4cfcaa2e5b6!8m2!3d42.6935078!4d23.3347926'); 
+
+INSERT INTO `student` (`FN`, `Curriculum`, `Class`, `Student_group`, `Faculty`, `Degree`, `First_name`, `Last_name`, `Password`, `Participation`, `Diploma_number`, `Grade`, `Participation_order`) VALUES ('81692', 'КН', '2021', '7', 'ФМИ', 'Bachelor', 'Диана', 'Петрушева', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0', 'xxx-122', '6', NULL); 
+
+INSERT INTO `student` (`FN`, `Curriculum`, `Class`, `Student_group`, `Faculty`, `Degree`, `First_name`, `Last_name`, `Password`, `Participation`, `Diploma_number`, `Grade`, `Participation_order`) VALUES ('81622', 'КН', '2021', '7', 'ФМИ', 'Bachelor', 'Елиан', 'Петков', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0', 'xxx-222', '6', NULL);
+
+INSERT INTO `student` (`FN`, `Curriculum`, `Class`, `Student_group`, `Faculty`, `Degree`, `First_name`, `Last_name`, `Password`, `Participation`, `Diploma_number`, `Grade`, `Participation_order`) VALUES ('81222', 'КН', '2021', '5', 'ФМИ', 'Bachelor', 'Димитър', 'Иванов', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '1', 'xxx-322', '4', '1');
+
+INSERT INTO `student` (`FN`, `Curriculum`, `Class`, `Student_group`, `Faculty`, `Degree`, `First_name`, `Last_name`, `Password`, `Participation`, `Diploma_number`, `Grade`, `Participation_order`) VALUES ('81547', 'КН', '2021', '6', 'ФМИ', 'Bachelor', 'Денислав', 'Иванов', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '1', 'ххх-432', '6', '2');
+
+INSERT INTO `hat` (`FN`, `Class`, `Curriculum`, `State`, `Last_change_date`, `Comment`) VALUES ('81547', '2021', 'КН', 'NotTaken', NULL, NULL), ('81222', '2021', 'КН', 'NotTaken', NULL, NULL); 
+
+INSERT INTO `gown` (`FN`, `Class`, `Curriculum`, `State`, `Last_change_date`, `Comment`) VALUES ('81547', '2021', 'КН', 'NotTaken', NULL, NULL), ('81222', '2021', 'КН', 'NotTaken', NULL, NULL);
+
+INSERT INTO `diploma` (`FN`, `Class`, `Curriculum`, `State`, `Last_change_date`, `Comment`) VALUES ('81547', '2021', 'КН', 'NotTaken', NULL, NULL), ('81222', '2021', 'КН', 'NotTaken', NULL, NULL);
+
+INSERT INTO `sign` (`FN`, `Class`, `Curriculum`, `State`, `Last_change_date`, `Comment`) VALUES ('81547', '2021', 'КН', 'NotSigned', NULL, NULL), ('81222', '2021', 'КН', 'NotSigned', NULL, NULL);

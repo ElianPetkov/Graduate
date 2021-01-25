@@ -8,7 +8,6 @@ class Ceremony
     private $curriculum;
     private $googleLink;
     private $duration;
-    //private $degree;
     private $address;
     private $date;
     private $capacity;
@@ -36,7 +35,6 @@ class Ceremony
         if(is_array($ceremonyData))
         {    
         $this->class = $ceremonyData['Class'];
-        //$this->degree = $ceremonyData['Degree'];
         $this->address = $ceremonyData['Address'];
         $this->date = $ceremonyData['Start_time'];
         $this->duration = $ceremonyData['Duration'];

@@ -28,7 +28,6 @@ if (!empty($_POST['user']) && !empty($_POST['password'])) {
         $_SESSION['Class'] = '2021';
         $_SESSION['Curriculum'] = 'КН';    
         header("Location:../views/diplomаsUI.php");
-              //echo 'You have entered valid username and password';
     }else if($user == 'Sign' && $_POST['password'] == '123456'){
         $_SESSION['valid'] = true;
         $_SESSION['timeout'] = time();

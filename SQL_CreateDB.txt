@@ -7,7 +7,7 @@ CREATE TABLE `ceremony` (
  `Duration` double NOT NULL,
  `Address` varchar(64) NOT NULL,
  `Capacity` int(11) NOT NULL,
- `Map_link` varchar(128) NOT NULL,
+ `Map_link` varchar(512) NOT NULL,
  PRIMARY KEY (`Curriculum`,`Class`),
  KEY `Curriculum` (`Curriculum`,`Class`)
 );

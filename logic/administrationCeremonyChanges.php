@@ -51,7 +51,6 @@ if ($_SESSION['role'] == 'admin') {
 
         foreach ($data as $row) {
             if (!$flag) {
-                // display field/column names as first row
                 echo implode("\t", array_keys($row)) . "\r\n";
                 $flag = true;
             }

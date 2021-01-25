@@ -46,8 +46,6 @@ if ($_SESSION['role'] == 'student') {
         $isStudentEnrolledToCeremony = $student->getIsParticipation();
 
         if (!$isStudentEnrolledToCeremony) {
-            //TODO enroll in all tasks
-            //And give order number
             $student->enrollStudent($fn);
         }
 
@@ -88,7 +86,6 @@ if ($_SESSION['role'] == 'student') {
        
         $isStudentEnrolledToCeremony = $student->getIsParticipation();
 
-        //оптимизации за ред на студента и ориентировачно време
         if($isStudentEnrolledToCeremony){
         $hat = new Hat();
         $msgHat = $hat->stateIntoMessage($fn);

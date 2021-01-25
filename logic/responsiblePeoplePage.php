@@ -3,7 +3,6 @@
 require_once '../config/includeClasses.php';
 
     session_start();
-    // $password = $_GET['password'];
     $role = $_SESSION['role'];
 
    if($role == 'diploma') $select = "Select FN,State,Last_change_date,Comment from Diploma where Class = ? AND Curriculum = ?";
@@ -16,7 +15,6 @@ require_once '../config/includeClasses.php';
     $statement = $conn->prepare($select);
     $statement->execute([$_SESSION['Class'], $_SESSION['Curriculum']]);
     $students = $statement->fetchAll();
-    //print_r($students);
 
 
     if($_POST)
