@@ -59,7 +59,7 @@
                 <?php
                  if (isset($isStudentEnrolledToCeremony) && $isStudentEnrolledToCeremony) {
                      echo "
-                    <section id='invitation-container'>
+                    <section id='tasks-container'>
                         <div class='enrollMessage'>
                             <p>
                             Записан сте за предстоящата церемония на $ceremonyDate
